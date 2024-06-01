@@ -3,10 +3,10 @@ title: Home
 layout: home
 ---
 
-# Focus on writing good documentation
+# Welcome to my personal website!
 {: .fs-9 }
 
-Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages.
+Here, you'll find an in-depth look at my skills, experiences, and achievements. Browse through my resume to see detailed information on my education, work history, projects, and professional accomplishments.
 {: .fs-6 .fw-300 }
 
 [Download resume](https://github.com/dannyphamv/website){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
