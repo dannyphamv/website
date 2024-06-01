@@ -1,7 +1,6 @@
 ---
 title: Home
-layout: default
-nav_enabled: false
+layout: home
 ---
 
 # Focus on writing good documentation
