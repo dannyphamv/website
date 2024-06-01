@@ -17,11 +17,11 @@ This is still a work-in-progress!
 
 <div class="code-example" markdown="1">
 
-[Link button](https://just-the-docs.com){: .btn }
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 </div>
 ```markdown
-[Link button](https://just-the-docs.com){: .btn }
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 ```
 
 ----
