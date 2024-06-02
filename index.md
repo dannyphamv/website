@@ -10,6 +10,7 @@ Here, you'll find an in-depth look at my skills, experiences, and achievements. 
 {: .fs-6 .fw-300 }
 
 [View resume](/assets/resume.pdf){: .btn .btn-primary }
+[Link button](https://just-the-docs.com){: .btn }
 
 ---
 
