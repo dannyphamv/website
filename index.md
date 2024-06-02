@@ -9,7 +9,7 @@ layout: home
 Here, you'll find an in-depth look at my skills, experiences, and achievements. Browse through my resume to see detailed information on my education, work history, projects, and professional accomplishments.
 {: .fs-6 .fw-300 }
 
-[Download resume](https://github.com/dannyphamv/website){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[View resume](/assets/resume.pdf){: .btn .btn-primary }
 
 ---
 
