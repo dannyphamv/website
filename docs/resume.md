@@ -11,7 +11,7 @@ nav_exclude: true
 		var adobeDCView = new AdobeDC.View({clientId: "7c1e0c31346443b581bfab472ae29541", divId: "adobe-dc-view"});
 		adobeDCView.previewFile({
 			content:{location: {url: "https://dannyphamv.com/assets/resume.pdf"}},
-			metaData:{fileName: "resume.pdf"}
+			metaData:{fileName: "DannyPham_Resume.pdf"}
 		}, {embedMode: "IN_LINE"});
 	});
 </script>
