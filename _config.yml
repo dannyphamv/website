@@ -10,12 +10,15 @@ aux_links_new_tab: true
 aux_links:
   LinkedIn Profile: https://www.linkedin.com/in/dannyphamv/
 
-back_to_top: true
-back_to_top_text: "Back to top"
-
 callouts:
   warning:
     title: Warning
     color: red
+  highlight:
+    title: Highlight
+    color: yellow
+  note:
+    title: Note
+    color: blue
 
 footer_content: "Copyright &copy; 2024 Danny Pham. Distributed by an <a href=\"https://github.com/dannyphamv/website/blob/main/LICENSE\">MIT license.</a> <a href=\"https://www.cloudflare.com/\">This site is powered by Cloudflare.</a>"
