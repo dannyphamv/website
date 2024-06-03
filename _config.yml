@@ -6,9 +6,10 @@ color_scheme: dark
 url: "https://dannyphamv.com"
 repository: dannyphamv/website
 
-aux_links_new_tab: true
-aux_links:
-  LinkedIn Profile: https://www.linkedin.com/in/dannyphamv/
+nav_external_links:
+  - title: LinkedIn Profile
+    url: https://www.linkedin.com/in/dannyphamv/
+    opens_in_new_tab: true
 
 callouts:
   warning:
