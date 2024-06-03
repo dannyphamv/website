@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Resume
-nav_order: 2
+nav_exclude: true
 ---
 
 <div id="adobe-dc-view" style="width: 800px;"></div>
