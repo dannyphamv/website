@@ -2,7 +2,7 @@
 layout: default
 title: Diplomas
 parent: Resume
-nav_order: 1
+nav_order: 3
 ---
 
 <div id="adobe-dc-view" style="width: 100%;"></div>
