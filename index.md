@@ -16,7 +16,7 @@ Here, you'll find an in-depth look at my skills, experiences, and achievements.
 ---
 
 {: .warning }
-This is still a work-in-progress!
+This website is still a work-in-progress!
 
 <div class="code-example" markdown="1">
 
