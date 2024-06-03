@@ -11,7 +11,7 @@ nav_order: 2
     var adobeDCView = new AdobeDC.View({clientId: "7c1e0c31346443b581bfab472ae29541", divId: "adobe-dc-view"});
     adobeDCView.previewFile({
       content:{ location:
-        { url: "[https://acrobatservices.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf](https://dannyphamv.com/assets/resume.pdf)"}},
+        { url: "https://dannyphamv.com/assets/resume.pdf"}},
       metaData:{fileName: "resume.pdf"}
     },
     {
