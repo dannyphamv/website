@@ -1,37 +1,21 @@
 ---
-title: Home
-layout: home
+layout: default
+title: Test
+nav_order: 2
 ---
 
-# Welcome to my personal website!
-{: .fs-9 }
-
-Here, you'll find an in-depth look at my skills, experiences, and achievements. Browse through my resume to see detailed information on my education, work history, projects, and professional accomplishments.
-{: .fs-6 .fw-300 }
-
-[View resume](/assets/resume.pdf){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Contact me](mailto:danny@dannyphamv.com){: .btn .fs-5 .mb-4 .mb-md-0 }
-
----
-
-This is still a work-in-progress!
-
-<div class="code-example" markdown="1">
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-</div>
-```markdown
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-```
-
-----
-
-[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
-
-[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
-[GitHub Pages]: https://docs.github.com/en/pages
-[README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
-[Jekyll]: https://jekyllrb.com
-[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
+<div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
+<script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+  document.addEventListener("adobe_dc_view_sdk.ready", function(){
+    var adobeDCView = new AdobeDC.View({clientId: "7c1e0c31346443b581bfab472ae29541", divId: "adobe-dc-view"});
+    adobeDCView.previewFile({
+      content:{ location:
+        { url: "[https://acrobatservices.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf](https://dannyphamv.com/assets/resume.pdf)"}},
+      metaData:{fileName: "resume.pdf"}
+    },
+    {
+      embedMode: "SIZED_CONTAINER"
+    });
+  });
+</script>
