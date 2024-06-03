@@ -2,6 +2,7 @@
 layout: default
 title: Resume
 nav_order: 2
+has_children: true
 ---
 
 <div id="adobe-dc-view" style="width: 100%;"></div>
