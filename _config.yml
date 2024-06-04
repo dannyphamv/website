@@ -8,6 +8,8 @@ repository: dannyphamv/website
 
 permalink: pretty
 
+heading_anchors: false
+
 nav_external_links:
   - title: LinkedIn Profile
     url: https://www.linkedin.com/in/dannyphamv/
