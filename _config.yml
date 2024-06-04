@@ -6,6 +6,8 @@ color_scheme: dark
 url: "https://dannyphamv.com"
 repository: dannyphamv/website
 
+permalink: pretty
+
 nav_external_links:
   - title: LinkedIn Profile
     url: https://www.linkedin.com/in/dannyphamv/
@@ -23,3 +25,11 @@ callouts:
     color: blue
 
 footer_content: "Copyright &copy; 2024 Danny Pham. Distributed by an <a href=\"https://github.com/dannyphamv/website/blob/main/LICENSE\">MIT license.</a>"
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
