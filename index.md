@@ -18,12 +18,3 @@ Here, you'll find an in-depth look at my skills, experiences, and achievements.
 
 {: .warning }
 This website is still a work-in-progress!
-
-<div class="code-example" markdown="1">
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-</div>
-```markdown
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-```
