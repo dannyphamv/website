@@ -2,11 +2,9 @@ title: 👋 Hi, I’m Danny Pham. # name of the site
 author: Danny Pham # name of site's author
 email: https://domaincontact.cloudflareregistrar.com/dannyphamv.com  # email of site's author
 url: https://dannyphamv.com # root address of the site
-baseurl: "" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
   The personal website of Danny Pham. 
 
-permalink: /:slug.html
 
 # favicon: "logo.png" # name+extension of favicon (which must be put on the root folder)
 # goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
