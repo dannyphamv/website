@@ -5,7 +5,7 @@ title: 🎓 Bachelor's Degree
 
 This is my Bachelor of Applied Science in Data Analytics, _magna cum laude_.
 
-You can download or verify my degree [online](https://www.parchment.com/u/award/f09fa9b7a8c7f3d0179370e1d4f0f426) at Parchment.
+You can verify my degree [online](https://www.parchment.com/u/award/f09fa9b7a8c7f3d0179370e1d4f0f426) at Parchment.
 
 <div id="adobe-dc-view" style="width: 100%;"></div>
 <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
