@@ -1,5 +1,4 @@
 - [riggraz/no-style-please](https://github.com/riggraz/no-style-please) Jekyll theme
-- [Formspree](https://formspree.io) contact form
 - [Adobe](https://developer.adobe.com/document-services/apis/pdf-embed/) PDF Embed API
 
 MIT License
