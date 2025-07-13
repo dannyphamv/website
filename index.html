@@ -10,7 +10,6 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.classless.min.css"
-      id="pico-css"
     />
     <style>
       html,
@@ -54,18 +53,12 @@
         setTheme(current === "dark" ? "light" : "dark");
       }
       function updateToggle(theme) {
-        var checkbox = document.getElementById("theme-switch");
-        var label = document.getElementById("theme-label");
+        const checkbox = document.getElementById("theme-switch");
+        const label = document.getElementById("theme-label");
         if (!checkbox || !label) return;
-        if (theme === "dark") {
-          checkbox.checked = true;
-          label.textContent = "Dark Mode";
-        } else {
-          checkbox.checked = false;
-          label.textContent = "Light Mode";
-        }
+        checkbox.checked = theme === "dark";
+        label.textContent = theme === "dark" ? "Dark Mode" : "Light Mode";
       }
-      // On DOMContentLoaded, set theme from localStorage or system preference
       document.addEventListener("DOMContentLoaded", function () {
         const saved = localStorage.getItem("theme");
         if (saved === "light" || saved === "dark") {
@@ -112,10 +105,10 @@
       </header>
       <!-- ./ Header -->
       <!-- Main -->
-      <main>
-        <!-- Contact -->
-        <section id="contact">
-          <h2 style="padding-top: 2rem">📬 Get in Touch</h2>
+      <main style="padding-top: 1rem">
+        <!-- Article-->
+        <article id="contact">
+          <h2>📬 Get in Touch</h2>
           <p>
             Got a question, idea, or just want to say hey? Feel free to reach
             out! You can contact me via:
@@ -137,9 +130,12 @@
               GitHub
             </button>
           </div>
-        </section>
-        <section id="credentials">
-          <h2 style="padding-top: 2rem">🎓 Diplomas</h2>
+        </article>
+        <!-- ./ Article-->
+
+        <!-- Article-->
+        <article id="diplomas">
+          <h2>🎓 Diplomas</h2>
           <p>
             Here are some of the diplomas I’ve earned along the way. Feel free
             to take a look — I’m proud of my journey and I am always learning
@@ -148,6 +144,7 @@
           <ul>
             <li>
               <a
+                style="color: inherit"
                 href="https://www.parchment.com/u/award/f09fa9b7a8c7f3d0179370e1d4f0f426"
                 target="_blank"
               >
@@ -156,6 +153,7 @@
             </li>
             <li>
               <a
+                style="color: inherit"
                 href="https://www.parchment.com/u/award/66c64d4ef35fd87bab5c29b2620075eb"
                 target="_blank"
               >
@@ -163,7 +161,14 @@
               </a>
             </li>
           </ul>
-        </section>
+          <footer>
+            <small
+              >These digital credentials are official documents of Bellevue
+              College provided by Parchment.</small
+            >
+          </footer>
+        </article>
+        <!-- ./ Article-->
       </main>
     </div>
     <!-- Footer -->
