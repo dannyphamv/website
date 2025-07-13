@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!--
+      Danny Pham's Personal Website
+      Main HTML file
+      Comments added for clarity and future reference
+    -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>Danny Pham</title>
     <meta name="description" content="Danny Pham's personal website." />
-    <!-- Pico.css -->
+    <!-- Pico.css: Minimal CSS framework for styling -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.classless.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
+    />
+    <!--  -->
+    <!--
+      Custom styles for layout and appearance
+      - Responsive container
+      - Footer styling
+    -->
     <style>
       html,
       body {
@@ -41,17 +56,25 @@
         opacity: 0.8;
       }
     </style>
+    <!--
+      Theme toggle logic
+      - Handles light/dark mode switching
+      - Persists user preference in localStorage
+      - Updates toggle UI
+    -->
     <script>
-      // Light/Dark mode toggle logic
+      // Set the theme and update UI
       function setTheme(theme) {
         document.documentElement.setAttribute("data-theme", theme);
         localStorage.setItem("theme", theme);
         updateToggle(theme);
       }
+      // Toggle between light and dark mode
       function toggleTheme() {
         const current = document.documentElement.getAttribute("data-theme");
         setTheme(current === "dark" ? "light" : "dark");
       }
+      // Update the toggle switch and label
       function updateToggle(theme) {
         const checkbox = document.getElementById("theme-switch");
         const label = document.getElementById("theme-label");
@@ -59,6 +82,7 @@
         checkbox.checked = theme === "dark";
         label.textContent = "🌙";
       }
+      // On page load, set theme from localStorage or system preference
       document.addEventListener("DOMContentLoaded", function () {
         const saved = localStorage.getItem("theme");
         if (saved === "light" || saved === "dark") {
@@ -74,6 +98,7 @@
   </head>
 
   <body>
+    <!-- Theme toggle UI (top right) -->
     <div
       style="
         display: flex;
@@ -102,7 +127,7 @@
       </label>
     </div>
     <div class="container">
-      <!-- Header -->
+      <!-- Header: Site title and intro -->
       <header style="padding-top: 3rem">
         <hgroup>
           <h1>👋 Hi, I’m Danny Pham.</h1>
@@ -110,36 +135,40 @@
         </hgroup>
       </header>
       <!-- ./ Header -->
-      <!-- Main -->
+      <!-- Main content -->
       <main style="padding-top: 1rem">
-        <!-- Article-->
+        <!-- Contact Article -->
         <article id="contact">
           <h2>📬 Get in Touch</h2>
           <p>
             Got a question, idea, or just want to say hey? Feel free to reach
             out! You can contact me via:
           </p>
+          <!-- Contact buttons -->
           <div role="group">
             <button
+              class="pico-background-blue-600"
               onclick="window.location.href='mailto:danny@dannyphamv.com'"
             >
               Email
             </button>
             <button
+              class="pico-background-blue-600"
               onclick="window.open('https://www.linkedin.com/in/dannyphamv/', '_blank')"
             >
               LinkedIn
             </button>
             <button
+              class="pico-background-blue-600"
               onclick="window.open('https://github.com/dannyphamv', '_blank')"
             >
               GitHub
             </button>
           </div>
         </article>
-        <!-- ./ Article-->
+        <!-- ./ Contact Article -->
 
-        <!-- Article-->
+        <!-- Diplomas Article -->
         <article id="diplomas">
           <h2>🎓 Diplomas</h2>
           <p>
@@ -147,26 +176,34 @@
             to take a look — I’m proud of my journey and I am always learning
             more!
           </p>
-          <ul>
-            <li>
-              <a
-                style="color: inherit"
-                href="https://www.parchment.com/u/award/f09fa9b7a8c7f3d0179370e1d4f0f426"
-                target="_blank"
-              >
-                Bachelor of Applied Science in Data Analytics
-              </a>
-            </li>
-            <li>
-              <a
-                style="color: inherit"
-                href="https://www.parchment.com/u/award/66c64d4ef35fd87bab5c29b2620075eb"
-                target="_blank"
-              >
-                Associate of Arts and Sciences
-              </a>
-            </li>
-          </ul>
+
+          <!-- Diploma buttons -->
+          <section id="buttons">
+            <p class="grid">
+              <button style="width: 100%" class="pico-background-pumpkin-450">
+                <a
+                  style="color: inherit"
+                  href="https://www.parchment.com/u/award/f09fa9b7a8c7f3d0179370e1d4f0f426"
+                  target="_blank"
+                >
+                  Bachelor of Applied Science in Data Analytics
+                </a>
+              </button>
+            </p>
+            <p class="grid">
+              <button style="width: 100%" class="pico-background-jade-450">
+                <a
+                  style="color: inherit"
+                  href="https://www.parchment.com/u/award/66c64d4ef35fd87bab5c29b2620075eb"
+                  target="_blank"
+                >
+                  Associate of Arts and Sciences
+                </a>
+              </button>
+            </p>
+          </section>
+          <!-- ./ Diploma buttons -->
+          <!-- Diploma info footer -->
           <footer>
             <small
               >These digital credentials are official documents of
@@ -180,10 +217,10 @@
             >
           </footer>
         </article>
-        <!-- ./ Article-->
+        <!-- ./ Diplomas Article -->
       </main>
     </div>
-    <!-- Footer -->
+    <!-- Footer: Copyright and license -->
     <footer>
       &copy; 2025 Danny Pham. Distributed under an
       <a
