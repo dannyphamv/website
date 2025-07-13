@@ -1,20 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <!-- Pico.css -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.classless.min.css">
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <hgroup>
-      <h1>website test 2</h1>
-      <p>using pico.css</p>
-    </hgroup>
-  </header>
-  <!-- ./ Header -->
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <!-- Pico.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.classless.min.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2rem;
+      }
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      footer {
+        text-align: center;
+        font-size: 0.95em;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header style="padding-top: 3rem">
+        <hgroup>
+          <h1>👋 Hi, I’m Danny Pham.</h1>
+          <p>Welcome to my personal website!</p>
+        </hgroup>
+      </header>
+      <!-- ./ Header -->
+      <!-- Main -->
+      <main>
+        <!-- Contact -->
+        <section id="contact">
+          <h2 style="padding-top: 2rem">📬 Get in Touch</h2>
+          <p>
+            Got a question, idea, or just want to say hey? Feel free to reach
+            out! You can contact me via:
+          </p>
+          <nav>
+            <ul>
+              <li><a href="mailto:danny@dannyphamv.com">Email</a></li>
+              <li>
+                <a href="https://www.linkedin.com/in/dannyphamv/">LinkedIn</a>
+              </li>
+              <li><a href="https://github.com/dannyphamv">GitHub</a></li>
+            </ul>
+          </nav>
+        </section>
+        <section id="credentials">
+          <h2 style="padding-top: 2rem">🎓 Diplomas & Certificates</h2>
+          <p>
+            Here are some of the diplomas I’ve earned along the way. Feel free
+            to take a look — I’m proud of my journey and I am always learning
+            more!
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://www.parchment.com/u/award/f09fa9b7a8c7f3d0179370e1d4f0f426"
+                target="_blank"
+              >
+                Bachelor of Applied Science in Data Analytics
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.parchment.com/u/award/66c64d4ef35fd87bab5c29b2620075eb"
+                target="_blank"
+              >
+                Associate of Arts and Sciences
+              </a>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+    <!-- Footer -->
+    <footer>&copy; 2025 Danny Pham. All rights reserved.</footer>
+  </body>
 </html>
