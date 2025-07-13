@@ -57,7 +57,7 @@
         const label = document.getElementById("theme-label");
         if (!checkbox || !label) return;
         checkbox.checked = theme === "dark";
-        label.textContent = theme === "dark" ? "Dark Mode" : "Light Mode";
+        label.textContent = "🌙";
       }
       document.addEventListener("DOMContentLoaded", function () {
         const saved = localStorage.getItem("theme");
@@ -74,27 +74,33 @@
   </head>
 
   <body>
-    <label
-      for="theme-switch"
+    <div
       style="
+        display: flex;
+        align-items: center;
         position: absolute;
         top: 1rem;
         right: 1rem;
         z-index: 10;
-        cursor: pointer;
-        user-select: none;
         font-size: 1rem;
+        width: max-content;
       "
     >
-      <input
-        type="checkbox"
-        id="theme-switch"
-        role="switch"
-        aria-label="Toggle light/dark mode"
-        onchange="toggleTheme()"
-      />
-      <span id="theme-label">🌙 Dark Mode</span>
-    </label>
+      <span style="margin-right: 0.75em; user-select: none">☀️</span>
+      <label
+        for="theme-switch"
+        style="margin: 0; cursor: pointer; user-select: none"
+      >
+        <input
+          type="checkbox"
+          id="theme-switch"
+          role="switch"
+          aria-label="Toggle light/dark mode"
+          onchange="toggleTheme()"
+        />
+        <span id="theme-label">🌙</span>
+      </label>
+    </div>
     <div class="container">
       <!-- Header -->
       <header style="padding-top: 3rem">
