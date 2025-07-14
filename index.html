@@ -31,6 +31,15 @@
       - Footer styling
     -->
     <style>
+      /* Smooth transition for theme icon */
+      #theme-icon {
+        transition: transform 0.3s, opacity 0.3s;
+        display: inline-block;
+      }
+      #theme-icon.icon-fade {
+        opacity: 0;
+        transform: scale(0.7) rotate(-30deg);
+      }
       /* Darken all buttons on hover for better feedback */
       button {
         transition: filter 0.3s;
@@ -91,11 +100,19 @@
         const icon = document.getElementById("theme-icon");
         if (!checkbox || !icon) return;
         checkbox.checked = theme === "dark";
-        if (theme === "dark") {
-          icon.className = "ti ti-moon-filled";
-        } else {
-          icon.className = "ti ti-sun-filled";
-        }
+        // Animate icon change
+        icon.classList.add("icon-fade");
+        setTimeout(() => {
+          if (theme === "dark") {
+            icon.className = "ti ti-moon-filled icon-fade";
+          } else {
+            icon.className = "ti ti-sun-filled icon-fade";
+          }
+          // Fade in
+          setTimeout(() => {
+            icon.classList.remove("icon-fade");
+          }, 30);
+        }, 150);
       }
       // On page load, set theme from localStorage or system preference
       document.addEventListener("DOMContentLoaded", function () {
