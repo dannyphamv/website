@@ -32,9 +32,11 @@
     -->
     <style>
       /* Darken all buttons on hover for better feedback */
+      button {
+        transition: filter 0.3s;
+      }
       button:hover {
         filter: brightness(0.85);
-        transition: filter 0.3s;
       }
       html,
       body {
