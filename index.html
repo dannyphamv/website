@@ -86,9 +86,8 @@
       // Update the toggle switch and label
       function updateToggle(theme) {
         const checkbox = document.getElementById("theme-switch");
-        const label = document.getElementById("theme-label");
         const icon = document.getElementById("theme-icon");
-        if (!checkbox || !label || !icon) return;
+        if (!checkbox || !icon) return;
         checkbox.checked = theme === "dark";
         if (theme === "dark") {
           icon.className = "ti ti-moon-filled";
