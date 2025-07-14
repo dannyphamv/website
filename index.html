@@ -31,6 +31,10 @@
       - Footer styling
     -->
     <style>
+      /* Hide the theme toggle switch */
+      #theme-switch {
+        display: none;
+      }
       /* Smooth transition for theme icon */
       #theme-icon {
         font-size: 2em;
@@ -173,7 +177,9 @@
           user-select: none;
           background: none;
           border: none;
+          cursor: pointer;
         "
+        onclick="toggleTheme()"
         ><i id="theme-icon" class="ti ti-moon-filled"></i
       ></span>
     </div>
