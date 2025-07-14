@@ -24,44 +24,19 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
     />
-    <!--  -->
-    <!--
-      Custom styles for layout and appearance
-      - Responsive container
-      - Footer styling
-    -->
+
+    <!-- Custom styles for layout, theme, and appearance -->
     <style>
-      html,
-      body {
-        transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-          color 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      /* Hide the theme toggle switch */
-      #theme-switch {
-        display: none;
-      }
-      /* Smooth transition for theme icon */
-      #theme-icon {
-        font-size: 2em;
-        transition: transform 0.3s, opacity 0.3s;
-        display: inline-block;
-      }
-      #theme-icon.icon-fade {
-        opacity: 0;
-        transform: scale(0.7) rotate(-30deg);
-      }
-      /* Darken all buttons on hover for better feedback */
-      button {
-        transition: filter 0.3s;
-      }
-      button:hover {
-        filter: brightness(0.85);
-      }
+      /*------------------------------
+        Layout and Container
+      ------------------------------*/
       html,
       body {
         height: 100%;
         margin: 0;
         padding: 0;
+        transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+          color 0.1s cubic-bezier(0.4, 0, 0.2, 1);
       }
       body {
         min-height: 100vh;
@@ -71,29 +46,49 @@
         padding-bottom: 0;
       }
       .container {
-        flex: 1 0 auto;
-        display: flex;
-        flex-direction: column;
-      }
-      footer {
-        flex-shrink: 0;
-        margin-top: auto;
-      }
-      .container {
         max-width: 700px;
         margin: 0 auto;
         width: 100%;
         box-sizing: border-box;
         padding-left: 1rem;
         padding-right: 1rem;
-        flex: 1;
+        flex: 1 0 auto;
         display: flex;
         flex-direction: column;
       }
+
+      /*------------------------------
+        Footer Styling
+      ------------------------------*/
       footer {
         text-align: center;
         font-size: 0.95em;
         opacity: 0.8;
+        flex-shrink: 0;
+        margin-top: auto;
+      }
+
+      /*------------------------------
+        Theme Toggle Icon
+      ------------------------------*/
+      #theme-icon {
+        font-size: 2em;
+        transition: transform 0.3s, opacity 0.3s;
+        display: inline-block;
+      }
+      #theme-icon.icon-fade {
+        opacity: 0;
+        transform: scale(0.7) rotate(-30deg);
+      }
+
+      /*------------------------------
+        Button Feedback
+      ------------------------------*/
+      button {
+        transition: filter 0.3s;
+      }
+      button:hover {
+        filter: brightness(0.85);
       }
     </style>
     <!--
