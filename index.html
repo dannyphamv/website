@@ -72,28 +72,6 @@
       - Updates toggle UI
     -->
     <script>
-      // Hide tooltip on touch/click for theme toggle (fixes stuck tooltip on touch devices)
-      document.addEventListener("DOMContentLoaded", function () {
-        var themeToggleDiv = document.querySelector(
-          '[data-tooltip="Toggle theme"]'
-        );
-        if (themeToggleDiv) {
-          themeToggleDiv.addEventListener(
-            "touchstart",
-            function () {
-              themeToggleDiv.removeAttribute("data-tooltip");
-            },
-            { once: true }
-          );
-          themeToggleDiv.addEventListener(
-            "click",
-            function () {
-              themeToggleDiv.removeAttribute("data-tooltip");
-            },
-            { once: true }
-          );
-        }
-      });
       // Set the theme and update UI
       function setTheme(theme) {
         document.documentElement.setAttribute("data-theme", theme);
@@ -136,8 +114,6 @@
   <body>
     <!-- Theme toggle UI (top right) -->
     <div
-      data-tooltip="Toggle theme"
-      data-placement="bottom"
       style="
         display: flex;
         align-items: center;
