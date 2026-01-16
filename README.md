@@ -4,11 +4,9 @@ This is the personal website of Danny Pham, built with HTML and styled using Pic
 
 ## Features
 - Responsive layout with Pico.css
-- Light/Dark mode toggle (remembers user preference)
 - Contact section with email, LinkedIn, and GitHub links
 - Diplomas section with verified links
 - Accessible and semantic HTML
-- Tabler Icons: Embedded icons
 
 ## Usage
 You can visit the live website at [dannyphamv.com](https://dannyphamv.com).
