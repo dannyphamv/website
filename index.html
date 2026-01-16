@@ -8,6 +8,7 @@
     <title>Danny Pham's Website</title>
     <meta name="description" content="Danny Pham's Personal Website.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <style>
         .hero {
             display: flex;
@@ -42,6 +43,11 @@
         .left hgroup h2 {
             margin: 0;
         }
+
+        i.ti {
+            font-size: 3rem;
+        }
+
 
         .social {
             margin-left: auto;
@@ -138,10 +144,16 @@
             </div>
             <nav class="social" aria-label="Social">
                 <ul>
-                    <li><a href="https://github.com/dannyphamv" target="_blank" rel="noopener">GitHub</a></li>
-                    <li><a href="https://linkedin.com/in/dannyphamv" target="_blank" rel="noopener">LinkedIn</a></li>
-                    <li><button class="secondary"><a href="mailto:dannyphamv@duck.com" target="_blank"
-                                rel="noopener">Contact Me</a></button></li>
+                    <li>
+                        <a href="https://github.com/dannyphamv" target="_blank" rel="noopener" aria-label="GitHub">
+                            <i class="ti ti-brand-github"></i>
+                        </a>
+                    </li>
+                    <li><a href="https://linkedin.com/in/dannyphamv" target="_blank" rel="noopener"><i
+                                class="ti ti-brand-linkedin"></i></a></li>
+                    <li><a href="mailto:dannyphamv@duck.com" target="_blank" rel="noopener"><i
+                                class="ti ti-mail"></i></a></li>
+
                 </ul>
             </nav>
         </header>
@@ -248,8 +260,9 @@
                             (2018 – 2021)</span></h4>
                     <p><strong> Grade: </strong> magna cum laude
                     </p>
-<hr />
-<p>Verify this credential online at <a href="https://www.parchment.com/u/s/MXDP" class="contrast">Parchment.</a></p>
+                    <hr />
+                    <p>Verify this credential online at <a href="https://www.parchment.com/u/s/MXDP"
+                            class="contrast">Parchment.</a></p>
                 </div>
             </article>
         </section>
