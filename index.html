@@ -1,306 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <!--
-      Danny Pham's Personal Website
-      Main HTML file
-      Comments added for clarity and future reference
-    -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light dark" />
-    <title>Danny Pham</title>
-    <meta name="description" content="Danny Pham's personal website." />
-    <!-- Pico.css: Minimal CSS framework for styling -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.classless.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
-    />
-    <!--  -->
-    <!--
-      Custom styles for layout and appearance
-      - Responsive container
-      - Footer styling
-    -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Preview • Pico CSS</title>
+    <meta name="description" content="A pure HTML example, without dependencies.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
-      html,
-      body {
-        transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-          color 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      /* Hide the theme toggle switch */
-      #theme-switch {
-        display: none;
-      }
-      /* Smooth transition for theme icon */
-      #theme-icon {
-        font-size: 2em;
-        transition: transform 0.3s, opacity 0.3s;
-        display: inline-block;
-      }
-      #theme-icon.icon-fade {
-        opacity: 0;
-        transform: scale(0.7) rotate(-30deg);
-      }
-      /* Darken all buttons on hover for better feedback */
-      button {
-        transition: filter 0.3s;
-      }
-      button:hover {
-        filter: brightness(0.85);
-      }
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        min-height: 100vh;
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 0;
-      }
-      .container {
-        flex: 1 0 auto;
-        display: flex;
-        flex-direction: column;
-      }
-      footer {
-        flex-shrink: 0;
-        margin-top: auto;
-      }
-      .container {
-        max-width: 700px;
-        margin: 0 auto;
-        width: 100%;
-        box-sizing: border-box;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      footer {
-        text-align: center;
-        font-size: 0.95em;
-        opacity: 0.8;
-      }
-    </style>
-    <!--
-      Theme toggle logic
-      - Handles light/dark mode switching
-      - Persists user preference in localStorage
-      - Updates toggle UI
-    -->
-    <script>
-      // Set the theme and update UI
-      function setTheme(theme) {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-        updateToggle(theme);
-      }
-      // Toggle between light and dark mode
-      function toggleTheme() {
-        const current = document.documentElement.getAttribute("data-theme");
-        setTheme(current === "dark" ? "light" : "dark");
-      }
-      // Update the toggle switch and label
-      function updateToggle(theme) {
-        const checkbox = document.getElementById("theme-switch");
-        const icon = document.getElementById("theme-icon");
-        if (!checkbox || !icon) return;
-        checkbox.checked = theme === "dark";
-        // Animate icon change
-        icon.classList.add("icon-fade");
-        setTimeout(() => {
-          if (theme === "dark") {
-            icon.className = "ti ti-moon-filled icon-fade";
-          } else {
-            icon.className = "ti ti-sun-filled icon-fade";
-          }
-          // Fade in
-          setTimeout(() => {
-            icon.classList.remove("icon-fade");
-          }, 30);
-        }, 150);
-      }
-      // On page load, set theme from localStorage or system preference
-      document.addEventListener("DOMContentLoaded", function () {
-        const saved = localStorage.getItem("theme");
-        if (saved === "light" || saved === "dark") {
-          setTheme(saved);
-        } else {
-          const prefersDark = window.matchMedia(
-            "(prefers-color-scheme: dark)"
-          ).matches;
-          setTheme(prefersDark ? "dark" : "light");
+        .hero {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
         }
-      });
+
+        .hero>.left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .top-row hgroup {
+            margin: 0;
+        }
+
+        .left hgroup {
+            margin: 0;
+        }
+
+        /* Increase spacing between name and subtitle */
+        .left hgroup h1 {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .left hgroup h2 {
+            margin: 0;
+        }
+
+        .social {
+            margin-left: auto;
+            align-self: flex-start;
+        }
+
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .meta {
+            color: gray;
+            font-size: 0.95rem;
+        }
+
+        .skill-list {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            background: var(--surface-3);
+            padding: .25rem .5rem;
+            border-radius: 999px;
+        }
+
+        .skill-list kbd {
+            background: var(--surface-3);
+            padding: .25rem .5rem;
+            border-radius: 999px;
+            border: 0;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /* job item layout with square company logo */
+        .job {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .company-logo {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            border-radius: 8px;
+            object-fit: cover;
+            background: var(--pico-card-background-color);
+        }
+
+        .social {
+            margin-left: auto;
+        }
+
+        .social ul {
+            display: flex;
+            gap: .5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .social a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* top padding so page content isn't flush with the browser top */
+        main.container {
+            padding-top: 3rem;
+        }
+
+        /* extra padding above each top-level section */
+        main.container>section {
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <header class="hero">
+            <div class="left">
+                <hgroup>
+                    <h1>Danny Pham</h1>
+                    <h2>Data Analyst — Python, SQL, R</h2>
+                </hgroup>
+                <p class="meta"></a></p>
+            </div>
+            <nav class="social" aria-label="Social">
+                <ul>
+                    <li><a href="https://github.com/dannyphamv" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://linkedin.com/in/dannyphamv" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><button class="primary"><a href="mailto:dannyphamv@gmail.com" target="_blank"
+                                rel="noopener">Contact Me</a></button></li>
+                    <details class="dropdown">
+                        <summary role="button" class="outline contrast">Theme</summary>
+                        <ul>
+                            <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                            <li><a href="#" data-theme-switcher="light">Light</a></li>
+                            <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                        </ul>
+                    </details>
+                </ul>
+            </nav>
+        </header>
+        </header>
+
+        <section>
+            <h3>About</h3>
+            <p>Hi, I’m Danny 👋
+                I’m a data analytics graduate with hands-on experience in operations, technical support, and
+                customer-facing systems. I’ve worked in fast-paced environments where accuracy, reliability, and
+                communication matter, from managing complex order workflows to leading and training teams. I’m
+                especially interested in how data, technology, and process design come together to improve everyday
+                operations.</p>
+        </section>
+
+        <section>
+            <h3>Experience</h3>
+            <article class="job">
+                <!-- Using the provided Amazon logo from workspace -->
+                <img class="company-logo" src="images/trident_seafoods_logo.jpg" alt="Trident Seafoods logo">
+                <div>
+                    <h3>Trident Seafoods</h4>
+                        <h4>Order Specialist <span class="meta">(January 2026 – Present)</span></h4>
+                        <p class="meta"><strong>City:</strong> Seattle, WA</p>
+                        <ul>
+                            <li>Process incoming customer orders with accuracy and efficiency, ensuring timely entry
+                                into the system.</li>
+                            <li>Prioritize orders to meet shipping deadlines and customer expectations.</li>
+                            <li>Review orders for completeness, pricing and product availability; escalate any issues to
+                                the Customer Experience team to follow up.</li>
+                            <li>Serve as a point of contact for internal partners (e.g., Sales, Customer Experience,
+                                Sales Support technical teams, Logistics, Supply Chain) regarding order status and issue
+                                resolution.</li>
+                            <li>Support post-shipment issue resolution and coordinate with relevant departments to
+                                ensure customer satisfaction.</li>
+                            <li>Follow established operating procedures and utilize job aids and SOPs to complete tasks.
+                            <li>Support data quality initiatives by reviewing order data and participating in cleanup
+                                efforts.</li>
+                            <li>Contribute to team goals by managing workload effectively and prioritizing tasks based
+                                on urgency and impact.</li>
+                            <li>Provide support during peak periods or when team coverage is limited.</li>
+                        </ul>
+                </div>
+            </article>
+
+            <article class="job">
+                <img class="company-logo" src="images/amazon_logo.jpg" alt="Amazon logo">
+                <div>
+                    <h3>Amazon</h4>
+                        <h4>Lead Retail Customer Service Associate <span class="meta">(September 2024 – January
+                                2026)</span></h4>
+                        <p class="meta"><strong>City:</strong> Redmond, WA</p>
+
+
+                        <ul>
+                            <li>Delivered high-quality customer support for returns and pickups, processing over 10,000
+                                weekly transactions while maintaining accuracy, efficiency, and compliance with company
+                                policies.</li>
+                            <li>Utilized internal tools and databases to investigate and diagnose customer return
+                                issues, managing sensitive customer data with confidentiality and adherence to data
+                                privacy standards.</li>
+                            <li>Analyzed customer and operational data using Excel, identifying service trends,
+                                streamlining workflows, and creating reports that supported leadership decision-making.
+                            </li>
+                            <li>Trained and mentored groups of 3–6 new associates, developing onboarding materials,
+                                providing performance feedback, and strengthening overall team productivity and
+                                accuracy.</li>
+                            <li>Led weekly team meetings to communicate process updates, share operational insights, and
+                                promote collaboration across associates and management.</li>
+                            <li>Collaborated with cross-functional teams to streamline back-office workflows,
+                                coordinating mail processing, supply ordering, and inventory tracking.</li>
+
+                        </ul>
+                        <h4>Locker+ Retail Associate <span class="meta">(March 2022 – September 2024)</span></h4>
+                        <p class="meta"><strong>City:</strong> Bellevue, WA</p>
+
+                        <ul>
+                            <li>Processed customer package pickups and returns while delivering exceptional customer
+                                service at Amazon Locker+ retail location.</li>
+                            <li>Received, sorted, scanned, and prepared customer orders using handheld devices and
+                                smartphone technology to ensure accurate inventory management.</li>
+                            <li>Assisted customers with inquiries and resolved problems to enhance their pickup and
+                                return experience.</li>
+                            <li>Maintained clean, safe, and organized workspace in compliance with operational standards
+                                Managed daily site operations including opening and closing procedures for Locker+
+                                location.</li>
+                            <li>Unloaded and processed truck deliveries, accurately stowing merchandise for customer
+                                order fulfillment.</li>
+                            <li>Utilized problem-solving skills to address customer concerns and ensure smooth daily
+                                operations.</li>
+                        </ul>
+                </div>
+            </article>
+        </section>
+
+        <section>
+            <h3>Education</h3>
+            <article class="job">
+                <img class="company-logo" src="images/bellevue_college_logo.jpg" alt="Bellevue College logo">
+                <div>
+
+                    <h3>Bellevue College</h3>
+                    <h4><strong>Bachelor of Applied Science in Data Analytics</strong> <span class="meta">
+                            (2018 – 2021)</span></h4>
+                    <p><strong> Grade: </strong> magna cum laude
+                    </p>
+                    <hr />
+                    <p>Verify this credential online at <a href="https://www.parchment.com/u/s/MXDP"
+                            class="contrast">Parchment.</a></p>
+                </div>
+            </article>
+        </section>
+
+        <section>
+            <h3>Skills</h3>
+
+            <kbd>SQL</kbd>
+            <kbd>R</kbd>
+            <kbd>Python</kbd>
+            <kbd>Excel</kbd>
+            <kbd>Tableau</kbd>
+            <kbd>Power BI</kbd>
+
+        </section>
+
+        <section>
+            <footer>
+                <p class="meta">© <span id="year"></span> Danny Pham — Built with Pico CSS. </p>
+            </footer>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-  </head>
+</body>
 
-  <body>
-    <!-- Theme toggle UI (top right) -->
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        z-index: 10;
-        font-size: 1rem;
-        width: max-content;
-        background: none;
-        border: none;
-        box-shadow: none;
-      "
-    >
-      <label
-        for="theme-switch"
-        style="
-          margin: 0;
-          cursor: pointer;
-          user-select: none;
-          background: none;
-          border: none;
-          box-shadow: none;
-        "
-      >
-        <input
-          type="checkbox"
-          id="theme-switch"
-          role="switch"
-          aria-label="Toggle light/dark mode"
-          onchange="toggleTheme()"
-        />
-      </label>
-      <span
-        id="theme-label"
-        style="
-          margin-left: 0.5em;
-          user-select: none;
-          background: none;
-          border: none;
-          cursor: pointer;
-        "
-        onclick="toggleTheme()"
-        ><i id="theme-icon" class="ti ti-moon-filled"></i
-      ></span>
-    </div>
-    <div class="container">
-      <!-- Header: Site title and intro -->
-      <header style="padding-top: 3rem">
-        <hgroup>
-          <h1>👋 Hi, I’m Danny Pham.</h1>
-          <p>Welcome to my personal website!</p>
-        </hgroup>
-      </header>
-      <!-- ./ Header -->
-      <!-- Main content -->
-      <main style="padding-top: 1rem">
-        <!-- Contact Article -->
-        <article id="contact">
-          <h2><i class="ti ti-message-circle-star"></i> Get in Touch</h2>
-          <p>
-            Got a question, idea, or just want to say hey? Feel free to reach
-            out! You can contact me via:
-          </p>
-          <!-- Contact buttons -->
-          <div role="group">
-            <button
-              class="pico-background-azure-500"
-              onclick="window.open('mailto:danny@dannyphamv.com')"
-            >
-              <i class="ti ti-mail"></i>
-              Email
-            </button>
-            <button
-              class="pico-background-azure-500"
-              onclick="window.open('https://www.linkedin.com/in/dannyphamv/', '_blank')"
-            >
-              <i class="ti ti-brand-linkedin"></i>
-              LinkedIn
-            </button>
-            <button
-              class="pico-background-azure-500"
-              onclick="window.open('https://github.com/dannyphamv', '_blank')"
-            >
-              <i class="ti ti-brand-github"></i>
-              GitHub
-            </button>
-          </div>
-        </article>
-        <!-- ./ Contact Article -->
-
-        <!-- Diplomas Article -->
-        <article id="diplomas">
-          <h2><i class="ti ti-school"></i> Diplomas</h2>
-          <p>
-            Here are some of the diplomas I’ve earned along the way. Feel free
-            to take a look — I’m proud of my journey and I am always learning
-            more!
-          </p>
-
-          <!-- Diploma buttons -->
-          <section id="buttons">
-            <p class="grid">
-              <button
-                style="width: 100%"
-                class="pico-background-pumpkin-500"
-                onclick="window.open('https://www.parchment.com/u/award/f09fa9b7a8c7f3d0179370e1d4f0f426', '_blank')"
-              >
-                Bachelor of Applied Science in Data Analytics
-                <i class="ti ti-external-link"></i>
-              </button>
-            </p>
-            <p class="grid">
-              <button
-                style="width: 100%"
-                class="pico-background-jade-500"
-                onclick="window.open('https://www.parchment.com/u/award/66c64d4ef35fd87bab5c29b2620075eb', '_blank')"
-              >
-                Associate of Arts and Sciences
-                <i class="ti ti-external-link"></i>
-              </button>
-            </p>
-          </section>
-          <!-- ./ Diploma buttons -->
-          <!-- Diploma info footer -->
-          <footer>
-            <small
-              >These digital credentials are official documents of
-              <a style="color: inherit" href="https://www.bellevuecollege.edu/"
-                >Bellevue College</a
-              >
-              provided by
-              <a style="color: inherit" href="https://www.parchment.com/"
-                >Parchment</a
-              >.</small
-            >
-          </footer>
-        </article>
-        <!-- ./ Diplomas Article -->
-      </main>
-    </div>
-    <!-- Footer: Copyright and license -->
-    <footer>
-      &copy; 2025 Danny Pham. Distributed under an
-      <a
-        style="color: inherit"
-        href="https://github.com/dannyphamv/website/blob/main/LICENSE"
-        >MIT License</a
-      >.
-    </footer>
-  </body>
 </html>
