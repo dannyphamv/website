@@ -7,6 +7,7 @@ This is the personal website of Danny Pham, built with HTML and styled using Pic
 - Contact section with email, LinkedIn, and GitHub links
 - Diplomas section with verified links
 - Accessible and semantic HTML
+- Webfont icons from Font Awesome
 
 ## Usage
 You can visit the live website at [dannyphamv.com](https://dannyphamv.com).
