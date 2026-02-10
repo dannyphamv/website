@@ -2,248 +2,98 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <title>Danny Pham's Website</title>
-    <meta name="description" content="Danny Pham's Personal Website.">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <style>
-        .hero {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="/custom.css" />
+    <meta name="description" content="Danny Pham's Personal Website." />
 
-        .hero>.left {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .top-row {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .top-row hgroup {
-            margin: 0;
-        }
-
-        .left hgroup {
-            margin: 0;
-        }
-
-        /* Increase spacing between name and subtitle */
-        .left hgroup h1 {
-            margin: 0 0 0.5rem 0;
-        }
-
-        .left hgroup h2 {
-            margin: 0;
-        }
-
-        i.fa-brands,
-        i.fa-solid {
-            font-size: 2rem;
-        }
-
-
-        .social {
-            margin-left: auto;
-            align-self: flex-start;
-        }
-
-        .avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 12px;
-            object-fit: cover;
-        }
-
-        .meta {
-            color: gray;
-            font-size: 0.95rem;
-        }
-
-        .skill-list {
-            display: flex;
-            gap: .5rem;
-            flex-wrap: wrap;
-        }
-
-        .chip {
-            background: var(--surface-3);
-            padding: .25rem .5rem;
-            border-radius: 999px;
-        }
-
-        .skill-list kbd {
-            background: var(--surface-3);
-            padding: .25rem .5rem;
-            border-radius: 999px;
-            border: 0;
-            font-family: inherit;
-            font-size: inherit;
-        }
-
-        /* job item layout with square company logo */
-        .job {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .company-logo {
-            width: 80px;
-            height: 80px;
-            flex-shrink: 0;
-            border-radius: 8px;
-            object-fit: cover;
-            background: var(--pico-card-background-color);
-        }
-
-        .social {
-            margin-left: auto;
-        }
-
-        .social ul {
-            display: flex;
-            gap: .5rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .social a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* top padding so page content isn't flush with the browser top */
-        main.container {
-            padding-top: 3rem;
-        }
-
-        /* extra padding above each top-level section */
-        main.container>section {
-            padding-top: 2rem;
-        }
-    </style>
+    <title>Danny Pham</title>
 </head>
 
 <body>
-    <main class="container">
-        <header class="hero">
-            <div class="left">
-                <hgroup>
-                    <h1>Danny Pham</h1>
-                    <h2>Data Analyst — Python, SQL, R</h2>
-                </hgroup>
-                <p class="meta"></a></p>
-            </div>
-            <nav class="social" aria-label="Social">
-                <ul>
-                    <li>
-                        <a href="https://github.com/dannyphamv" target="_blank" rel="noopener" aria-label="GitHub"
-                            data-tooltip="GitHub">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                    </li>
-                    <li><a href="https://linkedin.com/in/dannyphamv" target="_blank" rel="noopener"
-                            aria-label="LinkedIn" data-tooltip="LinkedIn"><i
-                                class="fa-brands fa-square-linkedin"></i></a></li>
-                    <li><a href="mailto:dannyphamv@duck.com" target="_blank" rel="noopener" aria-label="Email Me"
-                            data-tooltip="Email Me"><i class="fa-solid fa-inbox"></i></a></li>
+    <header>
+        <nav>
+            <a href="https://github.com/dannyphamv" target="_blank" rel="noopener" aria-label="GitHub"
+                data-tooltip="GitHub">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="https://linkedin.com/in/dannyphamv" target="_blank" rel="noopener" aria-label="LinkedIn"
+                data-tooltip="LinkedIn"><i class="fa-brands fa-square-linkedin"></i> LinkedIn</a>
+            <a href="mailto:dannyphamv@duck.com" target="_blank" rel="noopener" aria-label="Email Me"
+                data-tooltip="Email Me"><i class="fa-solid fa-inbox"></i> Email Me</a>
+        </nav>
+        <h1>Danny Pham</h1>
+        <p>Data Analyst — Python, SQL, R</p>
+    </header>
 
-                </ul>
-            </nav>
-        </header>
-        </header>
+    <main>
+        <h3><i class="fa-solid fa-id-card"></i> About Me</h3>
+        <div class="notice">
+            I’m a Data Analytics graduate from Bellevue College with hands-on experience in operations, technical
+            support, and customer-facing retail. I’ve worked in fast-paced environments where accuracy, reliability, and
+            communication matter, from managing complex workflows to leading and training team members. I’m especially
+            interested in how data, technology, and business come together to improve everyday operations.</a>.
+        </div>
 
-        <section>
-            <h3><i class="fa-solid fa-id-card" style="font-size: 1.5rem;"></i> About</h3>
-            <p>
-                I’m a Data Analytics graduate from Bellevue College with hands-on experience in operations, technical
-                support, and
-                customer-facing retail. I’ve worked in fast-paced environments where accuracy, reliability, and
-                communication matter, from managing complex workflows to leading and training team members. I’m
-                especially interested in how data, technology, and business come together to improve
-                everyday
-                operations.</p>
-        </section>
+        <h3><i class="fa-solid fa-briefcase"></i> Experience</h3>
 
-        <section>
-            <h3><i class="fa-solid fa-briefcase" style="font-size: 1.5rem;"></i> Experience</h3>
-            <article class="job">
-                <img class="company-logo" src="images/amazon_logo.jpg" alt="Amazon logo">
-                <div>
-                    <h3>Amazon</h4>
-                        <h4>Lead Retail Customer Service Associate <span class="meta">(September 2024 – January
-                                2026)</span></h4>
+        <div class="notice">
+            <strong>Lead Customer Service Associate</strong> — <em>Amazon</em><br>
+            <dt><em>September 2024 - Present</em><br></dt>
+            <ul>
+                <li>Delivered high-quality customer support for returns and pickups, processing over 10,000
+                    weekly transactions while maintaining accuracy, efficiency, and compliance with company
+                    policies.</li>
+                <li>Utilized internal tools and databases to investigate and diagnose customer return
+                    issues, managing sensitive customer data with confidentiality and adherence to data
+                    privacy standards.</li>
+                <li>Analyzed customer and operational data using Excel, identifying service trends,
+                    streamlining workflows, and creating reports that supported leadership decision-making.
+                </li>
+                <li>Trained and mentored groups of 3–6 new associates, developing onboarding materials,
+                    providing performance feedback, and strengthening overall team productivity and
+                    accuracy.</li>
+                <li>Led weekly team meetings to communicate process updates, share operational insights, and
+                    promote collaboration across associates and management.</li>
+                <li>Collaborated with cross-functional teams to streamline back-office workflows,
+                    coordinating mail processing, supply ordering, and inventory tracking.</li>
 
+            </ul>
+            <hr>
+            <strong>Locker+ Retail Associate</strong> — <em>Amazon</em><br>
+            <dt><em>March 2022 - September 2024</em><br></dt>
+            <ul>
+                <li>Processed customer package pickups and returns while delivering exceptional customer
+                    service at Amazon Locker+ retail location.</li>
+                <li>Received, sorted, scanned, and prepared customer orders using handheld devices and
+                    smartphone technology to ensure accurate inventory management.</li>
+                <li>Assisted customers with inquiries and resolved problems to enhance their pickup and
+                    return experience.</li>
+                <li>Maintained clean, safe, and organized workspace in compliance with operational standards
+                    Managed daily site operations including opening and closing procedures for Locker+
+                    location.</li>
+                <li>Unloaded and processed truck deliveries, accurately stowing merchandise for customer
+                    order fulfillment.</li>
+                <li>Utilized problem-solving skills to address customer concerns and ensure smooth daily
+                    operations.</li>
+            </ul>
 
-                        <ul>
-                            <li>Delivered high-quality customer support for returns and pickups, processing over 10,000
-                                weekly transactions while maintaining accuracy, efficiency, and compliance with company
-                                policies.</li>
-                            <li>Utilized internal tools and databases to investigate and diagnose customer return
-                                issues, managing sensitive customer data with confidentiality and adherence to data
-                                privacy standards.</li>
-                            <li>Analyzed customer and operational data using Excel, identifying service trends,
-                                streamlining workflows, and creating reports that supported leadership decision-making.
-                            </li>
-                            <li>Trained and mentored groups of 3–6 new associates, developing onboarding materials,
-                                providing performance feedback, and strengthening overall team productivity and
-                                accuracy.</li>
-                            <li>Led weekly team meetings to communicate process updates, share operational insights, and
-                                promote collaboration across associates and management.</li>
-                            <li>Collaborated with cross-functional teams to streamline back-office workflows,
-                                coordinating mail processing, supply ordering, and inventory tracking.</li>
+        </div>
 
-                        </ul>
-                        <h4>Locker+ Retail Associate <span class="meta">(March 2022 – September 2024)</span></h4>
+        <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+        <div class="notice">
+            <strong>Bachelor of Applied Science in Data Analytics</strong> — <em>Bellevue College</em><br>
+            <dt><em><strong>Grade: </strong> magna cum laude</em><br></dt>
+            <hr>
+            <small>Verify this credential online at <a href="https://www.parchment.com/u/s/MXDP"
+                    target="_blank">Parchment.</a></small>
+        </div>
 
-                        <ul>
-                            <li>Processed customer package pickups and returns while delivering exceptional customer
-                                service at Amazon Locker+ retail location.</li>
-                            <li>Received, sorted, scanned, and prepared customer orders using handheld devices and
-                                smartphone technology to ensure accurate inventory management.</li>
-                            <li>Assisted customers with inquiries and resolved problems to enhance their pickup and
-                                return experience.</li>
-                            <li>Maintained clean, safe, and organized workspace in compliance with operational standards
-                                Managed daily site operations including opening and closing procedures for Locker+
-                                location.</li>
-                            <li>Unloaded and processed truck deliveries, accurately stowing merchandise for customer
-                                order fulfillment.</li>
-                            <li>Utilized problem-solving skills to address customer concerns and ensure smooth daily
-                                operations.</li>
-                        </ul>
-                </div>
-            </article>
-        </section>
-
-        <section>
-            <h3><i class="fa-solid fa-graduation-cap" style="font-size: 1.5rem;"></i> Education</h3>
-            <article class="job">
-                <img class="company-logo" src="images/bellevue_college_logo.jpg" alt="Bellevue College logo">
-                <div>
-
-                    <h3>Bellevue College</h3>
-                    <h4>Bachelor of Applied Science in Data Analytics <span class="meta">
-                            (2018 – 2021)</span></h4>
-                    <p><strong> Grade: </strong> magna cum laude
-                    </p>
-                    <hr />
-                    <p>Verify this credential online at <a href="https://www.parchment.com/u/s/MXDP"
-                            class="contrast">Parchment.</a></p>
-                </div>
-            </article>
-        </section>
-
-        <section>
-            <h3><i class="fa-solid fa-star" style="font-size: 1.5rem;"></i> Skills</h3>
+        <h3><i class="fa-solid fa-star"></i> Skills</h3>
+        <div class="notice">
 
             <kbd>SQL</kbd>
             <kbd>R</kbd>
@@ -252,16 +102,14 @@
             <kbd>Tableau</kbd>
             <kbd>Power BI</kbd>
             <kbd>Salesforce</kbd>
+        </div>
 
-        </section>
-
-        <section>
-            <footer>
-                <p class="meta">© <span id="year"></span> Danny Pham — Built with Pico CSS</p>
-            </footer>
-        </section>
     </main>
 
+    <footer>
+        <p class="meta">© <span id="year"></span> Danny Pham — Built with Simple.css and distributed under an MIT
+            License.</p>
+    </footer>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
