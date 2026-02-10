@@ -1,6 +1,6 @@
 # Danny Pham's Personal Website
 
-This is the personal website of Danny Pham, built with HTML and styled using Pico.css. It features a clean, responsive design, a light/dark mode, and sections for contact information and diplomas.
+This is the personal website of Danny Pham, built with HTML and styled using Simple.css. It features a clean, responsive design, a light/dark mode, and sections for contact information and diplomas.
 
 ## Features
 - Responsive layout with Simple.css
