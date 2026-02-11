@@ -153,3 +153,29 @@ html {
     border-radius: 10px;
     border: 2px solid var(--bg); /* Creates a nice padding effect */
 }
+
+/* Remove default underline first */
+main a {
+    text-decoration: none;
+    position: relative;
+    color: var(--accent);
+}
+
+main a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+main a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
