@@ -13,6 +13,7 @@
 
 
         /* Force theme based on the attribute we set via JS */
+        /* https://github.com/kevquirk/simple.css/wiki/Getting-Started-With-Simple.css*/
         [data-theme="light"] {
             --bg: #fff;
             --accent-bg: #f5f7ff;
