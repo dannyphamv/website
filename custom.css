@@ -179,22 +179,59 @@ main a:hover::after {
     transform-origin: bottom left;
 }
 
-/* Keep button size and structure consistent on mobile */
+/* Apply consistent styling to ALL nav items */
+nav a, 
+nav #theme-toggle {
+    /* Reset and Unify */
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    
+    /* Remove width constraints to let them match content */
+    min-width: 0 !important; 
+    width: auto !important;
+    
+    /* Equal height and internal spacing */
+    height: 2.2rem !important; 
+    padding: 0 15px !important; /* Adjust this to change button "fatness" */
+    margin: 5px !important;
+    
+    /* Border and Colors */
+    border: var(--border-width) solid var(--border) !important;
+    border-radius: var(--standard-border-radius) !important;
+    background: var(--accent-bg) !important;
+    color: var(--text) !important;
+    
+    /* Typography */
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Ensure the icon doesn't create extra width or height */
+nav #theme-toggle i {
+    width: 1.2rem !important; /* Fixed width for the icon itself */
+    text-align: center !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+}
+
+/* Hover effects */
+nav a:hover, 
+nav #theme-toggle:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    transform: translateY(-2px);
+}
+
+/* Shield against Simple.css mobile resets */
 @media only screen and (max-width: 720px) {
-    header nav a, 
-    header nav a:visited,
-    header nav #theme-toggle {
-        /* Restores the thickness and box shape */
+    header nav a {
         border: var(--border-width) solid var(--border) !important;
-        padding: 0.1rem 1rem !important;
-        
-        /* Restores the height height to match desktop */
-        line-height: 2 !important; 
-        
-        /* Prevents text from looking cramped */
+        padding: 0 15px !important;
         text-decoration: none !important;
-        margin: 0 0.5rem 1rem 0.5rem !important;
-        display: inline-block !important;
-        font-size: 1rem !important;
     }
 }
