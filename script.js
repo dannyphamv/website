@@ -48,3 +48,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const revealElements = document.querySelectorAll(".reveal");
     revealElements.forEach(el => observer.observe(el));
 });
+
+const progressBar = document.createElement('div');
+progressBar.id = 'scroll-progress';
+document.body.prepend(progressBar);
+
+window.onscroll = () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    progressBar.style.width = scrolled + "%";
+};
+
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const glow = document.createElement('div');
+    glow.id = 'cursor-glow';
+    document.body.appendChild(glow);
+
+    window.addEventListener('mousemove', (e) => {
+        // Move the glow to the cursor's current X and Y coordinates
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+    });
+
+    // Optional: Hide the glow when the mouse leaves the window
+    document.addEventListener('mouseleave', () => {
+        glow.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        glow.style.opacity = '0.08';
+    });
+});

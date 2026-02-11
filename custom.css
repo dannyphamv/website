@@ -17,7 +17,9 @@ nav button:hover {
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition:
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
     will-change: opacity, transform;
 }
 
@@ -83,4 +85,39 @@ kbd {
 
 #theme-toggle:active i {
     transform: rotate(360deg);
+}
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: var(--accent);
+    z-index: 1000;
+}
+
+#cursor-glow {
+    position: fixed;
+    width: 800px;
+    /* Larger size for a softer, more natural falloff */
+    height: 800px;
+    /* Radial gradient creates the 'glow' look */
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.08;
+    /* Keep it very subtle so it doesn't wash out the background */
+    pointer-events: none;
+    /* Allows clicks to pass through to links below */
+    z-index: -1;
+    /* Places it behind all text and 'notice' boxes */
+    transform: translate(-50%, -50%);
+    /* Centers the glow on the cursor tip */
+    transition: opacity 0.3s ease;
+    /* Smooth fade in/out */
+}
+
+/* Ensure the main body background doesn't hide the glow */
+body {
+    position: relative;
+    background-color: var(--bg);
 }
