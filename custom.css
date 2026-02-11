@@ -178,3 +178,23 @@ main a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+
+/* Keep button size and structure consistent on mobile */
+@media only screen and (max-width: 720px) {
+    header nav a, 
+    header nav a:visited,
+    header nav #theme-toggle {
+        /* Restores the thickness and box shape */
+        border: var(--border-width) solid var(--border) !important;
+        padding: 0.1rem 1rem !important;
+        
+        /* Restores the height height to match desktop */
+        line-height: 2 !important; 
+        
+        /* Prevents text from looking cramped */
+        text-decoration: none !important;
+        margin: 0 0.5rem 1rem 0.5rem !important;
+        display: inline-block !important;
+        font-size: 1rem !important;
+    }
+}
