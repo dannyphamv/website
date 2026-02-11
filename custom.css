@@ -13,12 +13,6 @@ nav button:hover {
     /* Lifts the icon slightly */
 }
 
-header h1,
-p,
-main h3 {
-    font-family: "Noto Serif", serif;
-}
-
 /* Force theme based on the attribute we set via JS */
 /* https://github.com/kevquirk/simple.css/wiki/Getting-Started-With-Simple.css*/
 [data-theme="light"] {
