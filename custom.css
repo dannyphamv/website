@@ -43,6 +43,7 @@ nav button:hover {
     --preformatted: #444;
     --marked: #ffdd33;
     --disabled: #efefef;
+    --glow-color: rgba(13, 71, 161, 0.2);
 }
 
 [data-theme="dark"] {
@@ -56,6 +57,7 @@ nav button:hover {
     --code: #f06292;
     --preformatted: #ccc;
     --disabled: #111;
+    --glow-color: rgba(255, 179, 0, 0.08);
 }
 
 #theme-toggle {
@@ -100,20 +102,18 @@ kbd {
 #cursor-glow {
     position: fixed;
     width: 800px;
-    /* Larger size for a softer, more natural falloff */
     height: 800px;
-    /* Radial gradient creates the 'glow' look */
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    opacity: 0.08;
-    /* Keep it very subtle so it doesn't wash out the background */
+    /* Use the variable to pull the specific theme color */
+    background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+
+    /* Set to 1 because transparency is now handled by the variable above */
+    opacity: 1;
+
     pointer-events: none;
-    /* Allows clicks to pass through to links below */
     z-index: -1;
-    /* Places it behind all text and 'notice' boxes */
     transform: translate(-50%, -50%);
-    /* Centers the glow on the cursor tip */
-    transition: opacity 0.3s ease;
-    /* Smooth fade in/out */
+    /* Transition added for smooth color swapping when toggling themes */
+    transition: background 0.5s ease, opacity 0.3s ease;
 }
 
 /* Ensure the main body background doesn't hide the glow */

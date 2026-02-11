@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('mouseenter', () => {
-        glow.style.opacity = '0.08';
+        // Change this from '0.08' to '1'
+        glow.style.opacity = '1';
     });
 });
