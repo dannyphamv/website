@@ -26,3 +26,25 @@ toggleBtn.addEventListener("click", () => {
 function updateIcon(theme) {
     icon.className = theme === "dark" ? "fa-solid fa-moon" : "fa-regular fa-moon";
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+        threshold: 0.15 // Triggers when 15% of the element is visible
+    };
+
+    const revealCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                // Once it's revealed, we can stop observing it
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(revealCallback, observerOptions);
+
+    // Target all elements with the .reveal class
+    const revealElements = document.querySelectorAll(".reveal");
+    revealElements.forEach(el => observer.observe(el));
+});
