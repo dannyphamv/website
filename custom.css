@@ -57,7 +57,7 @@ nav button:hover {
     --code: #f06292;
     --preformatted: #ccc;
     --disabled: #111;
-    --glow-color: rgba(255, 179, 0, 0.08);
+    --glow-color: rgba(255, 179, 0, 0.1);
 }
 
 #theme-toggle {
