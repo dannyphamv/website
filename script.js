@@ -95,18 +95,3 @@ function typeWriter() {
 }
 
 document.addEventListener('DOMContentLoaded', typeWriter);
-
-document.addEventListener('mousemove', (e) => {
-    const notices = document.querySelectorAll('.notice');
-    notices.forEach(box => {
-        const rect = box.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        
-        const moveX = (e.clientX - centerX) / 25;
-        const moveY = (e.clientY - centerY) / 25;
-        
-        box.style.boxShadow = `${-moveX}px ${-moveY}px 20px rgba(0,0,0,0.15)`;
-    });
-});
-
