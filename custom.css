@@ -121,3 +121,35 @@ body {
     position: relative;
     background-color: var(--bg);
 }
+
+::selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+/* For Firefox */
+::-moz-selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+/* This automatically styles the scrollbar thumb and track */
+html {
+    scrollbar-color: var(--accent) var(--bg);
+    scrollbar-width: thin;
+}
+
+/* For Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+    border: 2px solid var(--bg); /* Creates a nice padding effect */
+}
