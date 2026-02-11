@@ -1,13 +1,16 @@
-        nav a {
+        nav a,
+        nav button {
             transition: color 0.3s ease, transform 0.2s ease;
             display: inline-block;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav button:hover {
             color: var(--accent);
             transform: translateY(-2px);
             /* Lifts the icon slightly */
         }
+
 
         /* Force theme based on the attribute we set via JS */
         [data-theme="light"] {
