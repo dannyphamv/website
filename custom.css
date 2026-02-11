@@ -1,0 +1,58 @@
+        nav a {
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+            /* Lifts the icon slightly */
+        }
+
+        /* Force theme based on the attribute we set via JS */
+        [data-theme="light"] {
+            --bg: #fff;
+            --accent-bg: #f5f7ff;
+            --text: #212121;
+            --text-light: #585858;
+            --accent: #0d47a1;
+            --accent-hover: #1266e2;
+            --accent-text: var(--bg);
+            --code: #d81b60;
+            --preformatted: #444;
+            --marked: #ffdd33;
+            --disabled: #efefef;
+        }
+
+        [data-theme="dark"] {
+            --bg: #212121;
+            --accent-bg: #2b2b2b;
+            --text: #dcdcdc;
+            --text-light: #ababab;
+            --accent: #ffb300;
+            --accent-hover: #ffe099;
+            --accent-text: var(--bg);
+            --code: #f06292;
+            --preformatted: #ccc;
+            --disabled: #111;
+        }
+
+        #theme-toggle {
+            background: var(--accent-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        kbd {
+            font-family: inherit;
+            /* Matches your body font */
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 5px;
+        }

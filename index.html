@@ -7,66 +7,11 @@
     <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="custom.css" />
     <meta name="description" content="Danny Pham's Personal Website." />
 
     <title>Danny Pham</title>
-    <style>
-        nav a {
-            transition: color 0.3s ease, transform 0.2s ease;
-            display: inline-block;
-        }
 
-        nav a:hover {
-            color: var(--accent);
-            transform: translateY(-2px);
-            /* Lifts the icon slightly */
-        }
-
-        /* Force theme based on the attribute we set via JS */
-        [data-theme="light"] {
-            --bg: #ffffff;
-            --accent-bg: #f2f2f2;
-            --text: #212121;
-            --text-light: #585858;
-            --border: #d1d1d1;
-            --accent: #0d47a1;
-            --code: #d81b60;
-            --preformatted: #444;
-            --marked: #ffdd33;
-        }
-
-        [data-theme="dark"] {
-            --bg: #212121;
-            --accent-bg: #2b2b2b;
-            --text: #dcdcdc;
-            --text-light: #ababab;
-            --border: #666;
-            --accent: #ffb300;
-            --code: #f06292;
-            --preformatted: #ccc;
-            --disabled: #111;
-        }
-
-        #theme-toggle {
-            background: var(--accent-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        #theme-toggle:hover {
-            border-color: var(--accent);
-        }
-
-        kbd {
-            font-family: inherit;
-            /* Matches your body font */
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 5px;
-        }
-    </style>
 
 </head>
 
@@ -80,7 +25,7 @@
             <a href="https://linkedin.com/in/dannyphamv" target="_blank" rel="noopener" aria-label="LinkedIn"
                 data-tooltip="LinkedIn"><i class="fa-brands fa-square-linkedin"></i> LinkedIn</a>
             <a href="mailto:dannyphamv@duck.com" target="_blank" rel="noopener" aria-label="Email Me"
-                data-tooltip="Email Me"><i class="fa-solid fa-inbox"></i> Email Me</a>
+                data-tooltip="Email Me"><i class="fa-solid fa-inbox"></i> Email</a>
             <button id="theme-toggle" aria-label="Toggle Theme" style="padding: 5px 10px; cursor: pointer;">
                 <i class="fa-solid fa-moon"></i>
             </button>
@@ -173,33 +118,7 @@
                 target="_blank">MIT License.</a>
         </p>
     </footer>
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-        const toggleBtn = document.getElementById('theme-toggle');
-        const icon = toggleBtn.querySelector('i');
-        const html = document.documentElement;
-
-        // Check for saved theme or system preference
-        const savedTheme = localStorage.getItem('theme') ||
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-        // Apply the theme on load
-        html.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
-
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
-
-        function updateIcon(theme) {
-            icon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-regular fa-moon';
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 
