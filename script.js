@@ -21,6 +21,13 @@ toggleBtn.addEventListener("click", () => {
     html.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
     updateIcon(newTheme);
+
+    /* --- MOBILE REPAINT FIX START --- */
+    // Briefly "touch" the body style to force a repaint
+    document.body.style.display = 'none';
+    document.body.offsetHeight; // Trigger a reflow
+    document.body.style.display = '';
+    /* --- MOBILE REPAINT FIX END --- */
 });
 
 function updateIcon(theme) {
