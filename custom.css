@@ -1,36 +1,57 @@
-nav a,
-nav button {
-    transition:
-        color 0.3s ease,
-        transform 0.2s ease;
-    display: inline-block;
+/* Navigation & Theme Toggle styling */
+nav a, 
+nav #theme-toggle {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    min-width: 0 !important; 
+    width: auto !important;
+    height: 2.2rem !important; 
+    padding: 0 15px !important; 
+    margin: 5px !important;
+    border: var(--border-width) solid var(--border) !important;
+    border-radius: var(--standard-border-radius) !important;
+    background: var(--accent-bg) !important;
+    color: var(--text) !important;
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    transition: all 0.3s ease !important;
 }
 
-nav a:hover,
-nav button:hover {
-    color: var(--accent);
+nav #theme-toggle i {
+    width: 1.2rem !important;
+    text-align: center !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+}
+
+nav a:hover, 
+nav #theme-toggle:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
     transform: translateY(-2px);
-    /* Lifts the icon slightly */
 }
 
-/* The initial state: hidden and shifted down */
+@media only screen and (max-width: 720px) {
+    header nav a {
+        border: var(--border-width) solid var(--border) !important;
+        padding: 0 15px !important;
+    }
+}
+
+/* Animations */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition:
-        opacity 0.8s ease-out,
-        transform 0.8s ease-out;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     will-change: opacity, transform;
 }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-/* The active state: fully visible and at original position */
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Force theme based on the attribute we set via JS */
-/* https://github.com/kevquirk/simple.css/wiki/Getting-Started-With-Simple.css*/
+/* Theme Variables */
 [data-theme="light"] {
     --bg: #fff;
     --accent-bg: #f5f7ff;
@@ -43,50 +64,18 @@ nav button:hover {
     --preformatted: #444;
     --marked: #ffdd33;
     --disabled: #efefef;
-    --glow-color: rgba(13, 71, 161, 0.2);
 }
-
 [data-theme="dark"] {
-    --bg: #212121;
-    --accent-bg: #2b2b2b;
-    --text: #dcdcdc;
-    --text-light: #ababab;
-    --accent: #ffb300;
-    --accent-hover: #ffe099;
-    --accent-text: var(--bg);
-    --code: #f06292;
-    --preformatted: #ccc;
-    --disabled: #111;
-    --glow-color: rgba(255, 179, 0, 0.1);
-}
-
-#theme-toggle {
-    background: var(--accent-bg);
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-#theme-toggle:hover {
-    border-color: var(--accent);
-}
-
-kbd {
-    font-family: inherit;
-    /* Matches your body font */
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 5px;
-}
-
-/* Make the button spin when clicked */
-#theme-toggle i {
-    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-#theme-toggle:active i {
-    transform: rotate(360deg);
+  --bg: #212121;
+  --accent-bg: #2b2b2b;
+  --text: #dcdcdc;
+  --text-light: #ababab;
+  --accent: #ffb300;
+  --accent-hover: #ffe099;
+  --accent-text: var(--bg);
+  --code: #f06292;
+  --preformatted: #ccc;
+  --disabled: #111;
 }
 
 #scroll-progress {
@@ -99,62 +88,23 @@ kbd {
     z-index: 1000;
 }
 
-#cursor-glow {
-    position: fixed;
-    width: 800px;
-    height: 800px;
-    /* Use the variable to pull the specific theme color */
-    background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
-
-    /* Set to 1 because transparency is now handled by the variable above */
-    opacity: 1;
-
-    pointer-events: none;
-    z-index: -1;
-    transform: translate(-50%, -50%);
-    /* Transition added for smooth color swapping when toggling themes */
-    transition: background 0.5s ease, opacity 0.3s ease;
-}
-
-/* Ensure the main body background doesn't hide the glow */
+/* Vanta background fix */
 body {
     position: relative;
     background-color: var(--bg);
+    min-height: 100vh;
 }
 
-::selection {
-    background: var(--accent);
-    color: var(--bg);
+.vanta-canvas {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: -1;
 }
 
-/* For Firefox */
-::-moz-selection {
-    background: var(--accent);
-    color: var(--bg);
-}
-
-/* This automatically styles the scrollbar thumb and track */
-html {
-    scrollbar-color: var(--accent) var(--bg);
-    scrollbar-width: thin;
-}
-
-/* For Chrome, Edge, and Safari */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 10px;
-    border: 2px solid var(--bg); /* Creates a nice padding effect */
-}
-
-/* Remove default underline first */
+/* General Styles */
 main a {
     text-decoration: none;
     position: relative;
@@ -179,59 +129,19 @@ main a:hover::after {
     transform-origin: bottom left;
 }
 
-/* Apply consistent styling to ALL nav items */
-nav a, 
-nav #theme-toggle {
-    /* Reset and Unify */
-    box-sizing: border-box !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    vertical-align: middle !important;
-    
-    /* Remove width constraints to let them match content */
-    min-width: 0 !important; 
-    width: auto !important;
-    
-    /* Equal height and internal spacing */
-    height: 2.2rem !important; 
-    padding: 0 15px !important; /* Adjust this to change button "fatness" */
-    margin: 5px !important;
-    
-    /* Border and Colors */
-    border: var(--border-width) solid var(--border) !important;
-    border-radius: var(--standard-border-radius) !important;
-    background: var(--accent-bg) !important;
-    color: var(--text) !important;
-    
-    /* Typography */
-    text-decoration: none !important;
-    font-size: 1rem !important;
-    line-height: 1 !important;
-    transition: all 0.3s ease !important;
+kbd {
+    font-family: inherit;
+    font-weight: bold;
+    display: inline-block;
 }
 
-/* Ensure the icon doesn't create extra width or height */
-nav #theme-toggle i {
-    width: 1.2rem !important; /* Fixed width for the icon itself */
-    text-align: center !important;
-    line-height: 0 !important;
-    margin: 0 !important;
+/* Icon transition animation */
+@keyframes icon-pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8); }
+    100% { transform: scale(1); }
 }
 
-/* Hover effects */
-nav a:hover, 
-nav #theme-toggle:hover {
-    border-color: var(--accent) !important;
-    color: var(--accent) !important;
-    transform: translateY(-2px);
-}
-
-/* Shield against Simple.css mobile resets */
-@media only screen and (max-width: 720px) {
-    header nav a {
-        border: var(--border-width) solid var(--border) !important;
-        padding: 0 15px !important;
-        text-decoration: none !important;
-    }
+.animate-pop {
+    animation: icon-pop 0.4s ease-in-out;
 }

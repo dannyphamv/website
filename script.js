@@ -3,59 +3,88 @@ const toggleBtn = document.getElementById("theme-toggle");
 const icon = toggleBtn.querySelector("i");
 const html = document.documentElement;
 
-// Check for saved theme or system preference
 const savedTheme =
     localStorage.getItem("theme") ||
-    (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
-// Apply the theme on load
 html.setAttribute("data-theme", savedTheme);
 updateIcon(savedTheme);
 
+// Vanta.js Cloud Logic
+let vantaEffect = null;
+function initVanta() {
+    if (vantaEffect) vantaEffect.destroy();
+    
+    const isDark = html.getAttribute("data-theme") === "dark";
+    
+    vantaEffect = VANTA.CLOUDS({
+        el: "body",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        // Light Mode: Classic Blue Sky / Dark Mode: Deep Charcoal
+        backgroundColor: isDark ? 0x212121 : 0xffffff,
+        skyColor: isDark ? 0x2b2b2b : 0x68b2ff,
+        cloudColor: isDark ? 0x444444 : 0xadc1de,
+        cloudShadowColor: isDark ? 0x111111 : 0x183550,
+        sunColor: isDark ? 0x222222 : 0xff9911,
+        sunGlareColor: isDark ? 0x222222 : 0xff1100,
+        sunlightColor: isDark ? 0x222222 : 0xff9911,
+        speed: 1.0
+    });
+}
+
 toggleBtn.addEventListener("click", () => {
-    const currentTheme = html.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    // 1. Add the animation class
+    icon.classList.add('animate-pop');
 
-    html.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-    updateIcon(newTheme);
+    // 2. Change the theme logic (mid-way through the animation looks best)
+    setTimeout(() => {
+        const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateIcon(newTheme);
+        initVanta();
+    }, 200); // 200ms is the "bottom" of the 0.4s animation
 
-    /* --- MOBILE REPAINT FIX START --- */
-    // Briefly "touch" the body style to force a repaint
-    document.body.style.display = 'none';
-    document.body.offsetHeight; // Trigger a reflow
-    document.body.style.display = '';
-    /* --- MOBILE REPAINT FIX END --- */
+    // 3. Remove the class after animation ends to allow re-runs
+    icon.addEventListener('animationend', () => {
+        icon.classList.remove('animate-pop');
+    }, { once: true });
 });
 
 function updateIcon(theme) {
     icon.className = theme === "dark" ? "fa-solid fa-moon" : "fa-regular fa-moon";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const observerOptions = {
-        threshold: 0.15 // Triggers when 15% of the element is visible
-    };
+// ... (Your existing theme and Vanta functions)
 
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Initialize Background
+    initVanta();
+
+    // 2. Setup Intersection Observer for scroll animations
+    const observerOptions = { threshold: 0.15 };
     const revealCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
-                // Once it's revealed, we can stop observing it
                 observer.unobserve(entry.target);
             }
         });
     };
-
     const observer = new IntersectionObserver(revealCallback, observerOptions);
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-    // Target all elements with the .reveal class
-    const revealElements = document.querySelectorAll(".reveal");
-    revealElements.forEach(el => observer.observe(el));
+    // 3. Start Typewriter effect
+    typeWriter();
 });
 
+// Remove the separate event listener previously at the bottom
+
+// Scroll Progress
 const progressBar = document.createElement('div');
 progressBar.id = 'scroll-progress';
 document.body.prepend(progressBar);
@@ -67,32 +96,9 @@ window.onscroll = () => {
     progressBar.style.width = scrolled + "%";
 };
 
-// Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const glow = document.createElement('div');
-    glow.id = 'cursor-glow';
-    document.body.appendChild(glow);
-
-    window.addEventListener('mousemove', (e) => {
-        // Move the glow to the cursor's current X and Y coordinates
-        glow.style.left = e.clientX + 'px';
-        glow.style.top = e.clientY + 'px';
-    });
-
-    // Optional: Hide the glow when the mouse leaves the window
-    document.addEventListener('mouseleave', () => {
-        glow.style.opacity = '0';
-    });
-
-    document.addEventListener('mouseenter', () => {
-        // Change this from '0.08' to '1'
-        glow.style.opacity = '1';
-    });
-});
-
+// Typewriter
 const text = "Data Analyst — Python, SQL, R";
 let i = 0;
-
 function typeWriter() {
     if (i < text.length) {
         document.getElementById("typing-text").innerHTML += text.charAt(i);
@@ -101,4 +107,6 @@ function typeWriter() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', typeWriter);
+window.addEventListener("resize", () => {
+    if (vantaEffect) vantaEffect.resize();
+});
