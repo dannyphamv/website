@@ -10,21 +10,17 @@ const savedTheme =
 html.setAttribute("data-theme", savedTheme);
 updateIcon(savedTheme);
 
-// Vanta.js Cloud Logic
+// Vanta.js Cloud Logic - Optimized to prevent theme-switch delay
 let vantaEffect = null;
 function initVanta() {
-    if (vantaEffect) vantaEffect.destroy();
-    
     const isDark = html.getAttribute("data-theme") === "dark";
-    
-    vantaEffect = VANTA.CLOUDS({
+    const vantaOptions = {
         el: "body",
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
         minHeight: 200.00,
         minWidth: 200.00,
-        // Light Mode: Classic Blue Sky / Dark Mode: Deep Charcoal
         backgroundColor: isDark ? 0x212121 : 0xffffff,
         skyColor: isDark ? 0x2b2b2b : 0x68b2ff,
         cloudColor: isDark ? 0x444444 : 0xadc1de,
@@ -33,23 +29,28 @@ function initVanta() {
         sunGlareColor: isDark ? 0x222222 : 0xff1100,
         sunlightColor: isDark ? 0x222222 : 0xff9911,
         speed: 1.0
-    });
+    };
+
+    if (!vantaEffect) {
+        vantaEffect = VANTA.CLOUDS(vantaOptions);
+    } else {
+        // Update existing effect instead of destroying it
+        vantaEffect.setOptions(vantaOptions);
+    }
 }
 
 toggleBtn.addEventListener("click", () => {
-    // 1. Add the animation class
     icon.classList.add('animate-pop');
 
-    // 2. Change the theme logic (mid-way through the animation looks best)
+    // Change theme logic mid-way through animation
     setTimeout(() => {
         const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
         html.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
         updateIcon(newTheme);
         initVanta();
-    }, 200); // 200ms is the "bottom" of the 0.4s animation
+    }, 200);
 
-    // 3. Remove the class after animation ends to allow re-runs
     icon.addEventListener('animationend', () => {
         icon.classList.remove('animate-pop');
     }, { once: true });
@@ -59,13 +60,9 @@ function updateIcon(theme) {
     icon.className = theme === "dark" ? "fa-solid fa-moon" : "fa-regular fa-moon";
 }
 
-// ... (Your existing theme and Vanta functions)
-
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Initialize Background
     initVanta();
 
-    // 2. Setup Intersection Observer for scroll animations
     const observerOptions = { threshold: 0.15 };
     const revealCallback = (entries, observer) => {
         entries.forEach(entry => {
@@ -78,11 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver(revealCallback, observerOptions);
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-    // 3. Start Typewriter effect
     typeWriter();
 });
-
-// Remove the separate event listener previously at the bottom
 
 // Scroll Progress
 const progressBar = document.createElement('div');
