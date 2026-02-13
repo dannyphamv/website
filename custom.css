@@ -105,13 +105,15 @@ body {
 }
 
 /* General Styles */
-main a {
+main a, 
+footer a {
     text-decoration: none;
     position: relative;
     color: var(--accent);
 }
 
-main a::after {
+main a::after,
+footer a::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -124,7 +126,8 @@ main a::after {
     transition: transform 0.25s ease-out;
 }
 
-main a:hover::after {
+main a:hover::after,
+footer a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
