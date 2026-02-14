@@ -1,8 +1,12 @@
+// Set copyright year dynamically to avoid manual updates
 document.getElementById("year").textContent = new Date().getFullYear();
+
 const toggleBtn = document.getElementById("theme-toggle");
 const icon = toggleBtn.querySelector("i");
 const html = document.documentElement;
 
+// Theme initialization: Check localStorage first, then fall back to system preference
+// This allows user choice to override system settings
 const savedTheme =
     localStorage.getItem("theme") ||
     (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
@@ -10,18 +14,29 @@ const savedTheme =
 html.setAttribute("data-theme", savedTheme);
 updateIcon(savedTheme);
 
-// Check if user prefers reduced motion
+// Check if user prefers reduced motion for accessibility
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Vanta.js Cloud Logic - Optimized to prevent theme-switch delay
+/* Vanta.js Cloud Logic - Optimized Performance Strategy
+ * 
+ * WHY we use .setOptions() instead of destroying/recreating:
+ * - Destroying and recreating Vanta on theme switch causes a 500ms+ delay
+ * - This creates jarring visual lag when toggling themes
+ * - .setOptions() updates colors instantly without destroying the WebGL context
+ * - Results in smooth, instant theme transitions
+ */
 let vantaEffect = null;
+
 function initVanta() {
     // Don't initialize Vanta if user prefers reduced motion
+    // WebGL animations can trigger vestibular disorders
     if (prefersReducedMotion) {
         return;
     }
 
     const isDark = html.getAttribute("data-theme") === "dark";
+    
+    // Color configuration: Dark theme uses muted colors to reduce eye strain
     const vantaOptions = {
         el: "body",
         mouseControls: true,
@@ -40,30 +55,42 @@ function initVanta() {
     };
 
     if (!vantaEffect) {
+        // First initialization - create the effect
         vantaEffect = VANTA.CLOUDS(vantaOptions);
     } else {
-        // Update existing effect instead of destroying it
+        // Subsequent theme changes - update colors without destroying effect
+        // This is the key performance optimization
         vantaEffect.setOptions(vantaOptions);
     }
 }
 
+/* Theme Toggle Animation Strategy
+ * 
+ * WHY we delay theme change until mid-animation:
+ * - Creates smooth visual transition that feels intentional
+ * - Icon animation provides feedback before color change
+ * - 200ms delay aligns with icon shrink animation (50% of 400ms)
+ * - Prevents jarring instant color switch
+ */
 toggleBtn.addEventListener("click", () => {
     icon.classList.add('animate-pop');
 
-    // Change theme logic mid-way through animation
+    // Change theme mid-way through animation (at 200ms of 400ms total)
     setTimeout(() => {
         const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
         html.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
         updateIcon(newTheme);
-        initVanta();
+        initVanta(); // Update Vanta colors instantly via setOptions
     }, 200);
 
+    // Clean up animation class after it completes
     icon.addEventListener('animationend', () => {
         icon.classList.remove('animate-pop');
-    }, { once: true });
+    }, { once: true }); // { once: true } auto-removes listener to prevent memory leaks
 });
 
+// Toggle between filled and regular moon icon based on theme
 function updateIcon(theme) {
     icon.className = theme === "dark" ? "fa-solid fa-moon" : "fa-regular fa-moon";
 }
@@ -71,22 +98,30 @@ function updateIcon(theme) {
 document.addEventListener("DOMContentLoaded", () => {
     initVanta();
 
+    // Intersection Observer for scroll-reveal animations
+    // threshold: 0.15 means trigger when 15% of element is visible
     const observerOptions = { threshold: 0.15 };
+    
     const revealCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
+                // Unobserve after animation to improve performance
+                // We don't need to track elements that have already been revealed
                 observer.unobserve(entry.target);
             }
         });
     };
+    
     const observer = new IntersectionObserver(revealCallback, observerOptions);
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
     typeWriter();
 });
 
-// Scroll Progress
+/* Scroll Progress Bar
+ * Created dynamically via JS instead of HTML to keep markup clean
+ * ARIA attributes make it accessible to screen readers */
 const progressBar = document.createElement('div');
 progressBar.id = 'scroll-progress';
 progressBar.setAttribute('role', 'progressbar');
@@ -96,16 +131,22 @@ progressBar.setAttribute('aria-valuemax', '100');
 document.body.prepend(progressBar);
 
 window.onscroll = () => {
+    // Calculate scroll percentage
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (winScroll / height) * 100;
+    
     progressBar.style.width = scrolled + "%";
+    // Update ARIA value for accessibility
     progressBar.setAttribute('aria-valuenow', Math.round(scrolled));
 };
 
-// Typewriter
+/* Typewriter Effect
+ * Simple character-by-character reveal animation
+ * 100ms delay feels natural - not too fast, not too slow */
 const text = "Data Analyst — Python, SQL, R";
 let i = 0;
+
 function typeWriter() {
     if (i < text.length) {
         document.getElementById("typing-text").innerHTML += text.charAt(i);
@@ -114,7 +155,14 @@ function typeWriter() {
     }
 }
 
-// Debounced resize handler for better mobile performance
+/* Debounced Resize Handler
+ * 
+ * WHY we debounce:
+ * - Window resize events fire continuously during resize (hundreds of times)
+ * - Each Vanta resize recalculates WebGL canvas dimensions - expensive operation
+ * - Debouncing waits until user STOPS resizing before updating
+ * - 250ms delay is imperceptible to users but saves significant CPU
+ */
 let resizeTimeout;
 window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);

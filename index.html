@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- color-scheme tells browsers the site supports both themes - improves form controls -->
     <meta name="color-scheme" content="light dark" />
     <meta name="description"
         content="Danny Pham - Data Analytics graduate specializing in Python, SQL, and R with experience in operations and technical support." />
@@ -17,6 +18,9 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="custom.css" />
+    
+    <!-- defer attribute loads scripts after HTML parsing completes
+         This prevents blocking page render and improves perceived performance -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
     <script defer src="script.js"></script>
@@ -27,6 +31,7 @@
 <body>
     <header>
         <nav>
+            <!-- rel="noopener" prevents security vulnerability when opening external links -->
             <a href="https://github.com/dannyphamv" target="_blank" rel="noopener" aria-label="GitHub">
                 <i class="fa-brands fa-github"></i> GitHub
             </a>
@@ -41,6 +46,7 @@
             </button>
         </nav>
         <h1>Danny Pham</h1>
+        <!-- aria-live="polite" announces typewriter text changes to screen readers -->
         <p id="typing-text" aria-live="polite"></p>
     </header>
 
@@ -59,6 +65,7 @@
 
         <div class="notice reveal">
             <strong>Lead Customer Service Associate</strong> — <em>Amazon</em><br />
+            <!-- Using class="date" instead of <dt> because Simple.css <dt> styles conflict with our design -->
             <p class="date"><em>September 2024 - Present</em></p>
             <ul>
                 <li>
@@ -139,6 +146,7 @@
 
         <h3><i class="fa-solid fa-star"></i> Skills</h3>
         <div class="notice reveal">
+            <!-- Using <kbd> for skill tags because it provides semantic meaning (keyboard/command style) -->
             <kbd>SQL</kbd>
             <kbd>R</kbd>
             <kbd>Python</kbd>
@@ -151,6 +159,7 @@
 
     <footer>
         <p class="meta">
+            <!-- Dynamic year via JavaScript prevents manual updates -->
             © <span id="year"></span> Danny Pham — Built with
             <a href="https://simplecss.org/" target="_blank">Simple.css</a>
             and distributed under an

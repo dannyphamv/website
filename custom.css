@@ -1,4 +1,6 @@
-/* Navigation & Theme Toggle styling */
+/* Navigation & Theme Toggle styling 
+ * Using !important throughout to override Simple.css defaults
+ * This ensures consistent button sizing between nav links and theme toggle */
 nav a,
 nav #theme-toggle {
     box-sizing: border-box !important;
@@ -8,7 +10,7 @@ nav #theme-toggle {
     vertical-align: middle !important;
     min-width: 0 !important;
     width: auto !important;
-    height: 2.2rem !important;
+    height: 2.2rem !important; /* Fixed height prevents layout shift when icons load */
     padding: 0 15px !important;
     margin: 5px !important;
     border: var(--border-width) solid var(--border) !important;
@@ -21,6 +23,7 @@ nav #theme-toggle {
     transition: all 0.3s ease !important;
 }
 
+/* Icon sizing ensures Font Awesome icons don't cause button width changes */
 nav #theme-toggle i {
     width: 1.2rem !important;
     text-align: center !important;
@@ -35,6 +38,8 @@ nav #theme-toggle:hover {
     transform: translateY(-2px);
 }
 
+/* Mobile nav override - Simple.css removes borders on mobile by default
+ * We restore them to maintain visual consistency across breakpoints */
 @media only screen and (max-width: 720px) {
     header nav a {
         border: var(--border-width) solid var(--border) !important;
@@ -47,7 +52,7 @@ nav #theme-toggle:hover {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    will-change: opacity, transform;
+    will-change: opacity, transform; /* Optimizes GPU rendering for smoother animations */
 }
 
 .reveal.active {
@@ -55,7 +60,8 @@ nav #theme-toggle:hover {
     transform: translateY(0);
 }
 
-/* Respect user's motion preferences */
+/* Accessibility: Disable animations for users who prefer reduced motion
+ * This respects the prefers-reduced-motion media query per WCAG guidelines */
 @media (prefers-reduced-motion: reduce) {
     .reveal {
         opacity: 1;
@@ -73,7 +79,9 @@ nav #theme-toggle:hover {
     }
 }
 
-/* Theme Variables */
+/* Theme Variables
+ * Light theme uses high contrast for readability
+ * Dark theme uses warmer accent (gold) to reduce eye strain */
 [data-theme="light"] {
     --bg: #fff;
     --accent-bg: #f5f7ff;
@@ -93,7 +101,7 @@ nav #theme-toggle:hover {
     --accent-bg: #2b2b2b;
     --text: #dcdcdc;
     --text-light: #ababab;
-    --accent: #ffb300;
+    --accent: #ffb300; /* Gold instead of blue - warmer and less harsh on eyes */
     --accent-hover: #ffe099;
     --accent-text: var(--bg);
     --code: #f06292;
@@ -120,20 +128,23 @@ body {
     position: relative;
     background-color: var(--bg);
     min-height: 100vh;
-    min-height: 100dvh; /* Dynamic viewport height for mobile */
+    min-height: 100dvh; /* Dynamic viewport height for mobile - prevents address bar issues */
 }
 
+/* Fixed positioning ensures Vanta canvas stays behind all content
+ * Using dvh (dynamic viewport height) prevents iOS Safari scrolling bugs */
 .vanta-canvas {
     position: fixed !important;
     top: 0;
     left: 0;
     width: 100vw !important;
     height: 100vh !important;
-    height: 100dvh !important; /* Dynamic viewport height for mobile */
+    height: 100dvh !important;
     z-index: -1;
 }
 
-/* Disable Vanta for users who prefer reduced motion */
+/* Performance: Disable Vanta for users who prefer reduced motion
+ * The WebGL animation can cause issues for users with vestibular disorders */
 @media (prefers-reduced-motion: reduce) {
     .vanta-canvas {
         display: none;
@@ -148,6 +159,8 @@ footer a {
     color: var(--accent);
 }
 
+/* Animated underline effect using CSS transforms instead of width
+ * Transform is GPU-accelerated and performs better than width transitions */
 main a::after,
 footer a::after {
     content: '';
@@ -165,7 +178,7 @@ footer a::after {
 main a:hover::after,
 footer a:hover::after {
     transform: scaleX(1);
-    transform-origin: bottom left;
+    transform-origin: bottom left; /* Direction change creates smooth left-to-right animation */
 }
 
 kbd {
@@ -175,21 +188,23 @@ kbd {
     margin-bottom: 5px;
 }
 
-/* Date styling (replaces <dt> tag) */
+/* Date styling (replaces <dt> tag)
+ * Using class instead of semantic <dt> because Simple.css has unwanted <dt> styles */
 .date {
     color: var(--text-light);
     margin-top: 0;
     margin-bottom: 0.5rem;
 }
 
-/* Icon transition animation */
+/* Icon transition animation
+ * Used when theme toggle is clicked to provide visual feedback */
 @keyframes icon-pop {
     0% {
         transform: scale(1);
     }
 
     50% {
-        transform: scale(0.8);
+        transform: scale(0.8); /* Shrink to 80% before bouncing back */
     }
 
     100% {
