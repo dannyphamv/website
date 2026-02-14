@@ -45,7 +45,6 @@ A professional personal portfolio built with a focus on high performance, clean 
 ├── LICENSE             # MIT License
 └── .github/
     └── workflows/
-        └── jekyll-gh-pages.yml    # GitHub Pages deployment
 ```
 
 ## Installation & Usage
