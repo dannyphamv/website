@@ -114,6 +114,11 @@ function typeWriter() {
     }
 }
 
+// Debounced resize handler for better mobile performance
+let resizeTimeout;
 window.addEventListener("resize", () => {
-    if (vantaEffect) vantaEffect.resize();
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        if (vantaEffect) vantaEffect.resize();
+    }, 250);
 });
