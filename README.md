@@ -121,14 +121,6 @@ const text = "Your custom text here";
 - **Lazy Loading** - Intersection Observer for scroll-reveal animations
 - **Debounced Resize** - Optimized window resize handler
 
-## Browser Support
-
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -138,7 +130,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Simple.css](https://simplecss.org/) - Minimal CSS framework
 - [Vanta.js](https://www.vantajs.com/) - Animated backgrounds
 - [Font Awesome](https://fontawesome.com/) - Icon library
-
----
-
-Built with ❤️ using vanilla JavaScript
