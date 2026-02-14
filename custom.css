@@ -89,10 +89,14 @@ nav #theme-toggle:hover {
 }
 
 /* Vanta background fix */
+html {
+    height: 100%;
+}
+
 body {
     position: relative;
     background-color: var(--bg);
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .vanta-canvas {
