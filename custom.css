@@ -134,8 +134,10 @@ footer a:hover::after {
 
 kbd {
     font-family: inherit;
+    /* Matches your body font */
     font-weight: bold;
     display: inline-block;
+    margin-bottom: 5px;
 }
 
 /* Icon transition animation */
