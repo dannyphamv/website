@@ -4,7 +4,7 @@ A professional personal portfolio built with a focus on high performance, clean 
 
 **Live Site:** [dannyphamv.com](https://dannyphamv.com)
 
-![Website Preview](preview.png)
+![Website Preview](screenshot.png)
 
 ## Features
 
