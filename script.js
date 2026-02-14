@@ -18,17 +18,17 @@ function initVanta() {
         el: "body",
         mouseControls: true,
         touchControls: true,
-        gyroControls: false,
+        gyroControls: true,
         minHeight: 200.00,
         minWidth: 200.00,
         backgroundColor: isDark ? 0x212121 : 0xffffff,
-        skyColor: isDark ? 0x2b2b2b : 0x68b2ff,
+        skyColor: isDark ? 0x2b2b2b : 0x68b8d7,
         cloudColor: isDark ? 0x444444 : 0xadc1de,
         cloudShadowColor: isDark ? 0x111111 : 0x183550,
-        sunColor: isDark ? 0x222222 : 0xff9911,
-        sunGlareColor: isDark ? 0x222222 : 0xff1100,
-        sunlightColor: isDark ? 0x222222 : 0xff9911,
-        speed: 1.0
+        sunColor: isDark ? 0x222222 : 0xff9919,
+        sunGlareColor: isDark ? 0x222222 : 0xff6633,
+        sunlightColor: isDark ? 0x222222 : 0xff9933,
+        speed: 0.5
     };
 
     if (!vantaEffect) {
