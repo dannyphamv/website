@@ -1,15 +1,15 @@
 /* Navigation & Theme Toggle styling */
-nav a, 
+nav a,
 nav #theme-toggle {
     box-sizing: border-box !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     vertical-align: middle !important;
-    min-width: 0 !important; 
+    min-width: 0 !important;
     width: auto !important;
-    height: 2.2rem !important; 
-    padding: 0 15px !important; 
+    height: 2.2rem !important;
+    padding: 0 15px !important;
     margin: 5px !important;
     border: var(--border-width) solid var(--border) !important;
     border-radius: var(--standard-border-radius) !important;
@@ -28,7 +28,7 @@ nav #theme-toggle i {
     margin: 0 !important;
 }
 
-nav a:hover, 
+nav a:hover,
 nav #theme-toggle:hover {
     border-color: var(--accent) !important;
     color: var(--accent) !important;
@@ -49,7 +49,29 @@ nav #theme-toggle:hover {
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     will-change: opacity, transform;
 }
-.reveal.active { opacity: 1; transform: translateY(0); }
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    nav a:hover,
+    nav #theme-toggle:hover {
+        transform: none;
+    }
+
+    .animate-pop {
+        animation: none;
+    }
+}
 
 /* Theme Variables */
 [data-theme="light"] {
@@ -65,17 +87,18 @@ nav #theme-toggle:hover {
     --marked: #ffdd33;
     --disabled: #efefef;
 }
+
 [data-theme="dark"] {
-  --bg: #212121;
-  --accent-bg: #2b2b2b;
-  --text: #dcdcdc;
-  --text-light: #ababab;
-  --accent: #ffb300;
-  --accent-hover: #ffe099;
-  --accent-text: var(--bg);
-  --code: #f06292;
-  --preformatted: #ccc;
-  --disabled: #111;
+    --bg: #212121;
+    --accent-bg: #2b2b2b;
+    --text: #dcdcdc;
+    --text-light: #ababab;
+    --accent: #ffb300;
+    --accent-hover: #ffe099;
+    --accent-text: var(--bg);
+    --code: #f06292;
+    --preformatted: #ccc;
+    --disabled: #111;
 }
 
 #scroll-progress {
@@ -108,8 +131,15 @@ body {
     z-index: -1;
 }
 
+/* Disable Vanta for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .vanta-canvas {
+        display: none;
+    }
+}
+
 /* General Styles */
-main a, 
+main a,
 footer a {
     text-decoration: none;
     position: relative;
@@ -138,17 +168,31 @@ footer a:hover::after {
 
 kbd {
     font-family: inherit;
-    /* Matches your body font */
     font-weight: bold;
     display: inline-block;
     margin-bottom: 5px;
 }
 
+/* Date styling (replaces <dt> tag) */
+.date {
+    color: var(--text-light);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
 /* Icon transition animation */
 @keyframes icon-pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.8); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .animate-pop {

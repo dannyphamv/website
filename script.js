@@ -10,9 +10,17 @@ const savedTheme =
 html.setAttribute("data-theme", savedTheme);
 updateIcon(savedTheme);
 
+// Check if user prefers reduced motion
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Vanta.js Cloud Logic - Optimized to prevent theme-switch delay
 let vantaEffect = null;
 function initVanta() {
+    // Don't initialize Vanta if user prefers reduced motion
+    if (prefersReducedMotion) {
+        return;
+    }
+
     const isDark = html.getAttribute("data-theme") === "dark";
     const vantaOptions = {
         el: "body",
@@ -28,7 +36,7 @@ function initVanta() {
         sunColor: isDark ? 0x222222 : 0xff9919,
         sunGlareColor: isDark ? 0x222222 : 0xff6633,
         sunlightColor: isDark ? 0x222222 : 0xff9933,
-        speed: 0.5
+        speed: 0.4
     };
 
     if (!vantaEffect) {
@@ -81,6 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // Scroll Progress
 const progressBar = document.createElement('div');
 progressBar.id = 'scroll-progress';
+progressBar.setAttribute('role', 'progressbar');
+progressBar.setAttribute('aria-label', 'Page scroll progress');
+progressBar.setAttribute('aria-valuemin', '0');
+progressBar.setAttribute('aria-valuemax', '100');
 document.body.prepend(progressBar);
 
 window.onscroll = () => {
@@ -88,6 +100,7 @@ window.onscroll = () => {
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (winScroll / height) * 100;
     progressBar.style.width = scrolled + "%";
+    progressBar.setAttribute('aria-valuenow', Math.round(scrolled));
 };
 
 // Typewriter

@@ -5,13 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
+    <meta name="description"
+        content="Danny Pham - Data Analytics graduate specializing in Python, SQL, and R with experience in operations and technical support." />
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Danny Pham - Data Analyst" />
+    <meta property="og:description"
+        content="Data Analytics graduate specializing in Python, SQL, and R with experience in operations and technical support." />
+    <meta property="og:type" content="website" />
+
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="custom.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
-
-    <meta name="description" content="Danny Pham's Personal Website." />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <script defer src="script.js"></script>
 
     <title>Danny Pham</title>
 </head>
@@ -19,30 +27,31 @@
 <body>
     <header>
         <nav>
-            <a href="https://github.com/dannyphamv" target="_blank" rel="noopener" aria-label="GitHub"
-                data-tooltip="GitHub">
+            <a href="https://github.com/dannyphamv" target="_blank" rel="noopener" aria-label="GitHub">
                 <i class="fa-brands fa-github"></i> GitHub
             </a>
-            <a href="https://linkedin.com/in/dannyphamv" target="_blank" rel="noopener" aria-label="LinkedIn"
-                data-tooltip="LinkedIn"><i class="fa-brands fa-square-linkedin"></i> LinkedIn</a>
-            <a href="mailto:dannyphamv@duck.com" target="_blank" rel="noopener" aria-label="Email Me"
-                data-tooltip="Email Me"><i class="fa-solid fa-inbox"></i> Email</a>
-            <button id="theme-toggle" aria-label="Toggle Theme" data-tooltip="Toggle Theme">
+            <a href="https://linkedin.com/in/dannyphamv" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="fa-brands fa-square-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:dannyphamv@duck.com" target="_blank" rel="noopener" aria-label="Email Me">
+                <i class="fa-solid fa-inbox"></i> Email
+            </a>
+            <button id="theme-toggle" aria-label="Toggle Theme">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </nav>
         <h1>Danny Pham</h1>
-        <p id="typing-text"></p>
+        <p id="typing-text" aria-live="polite"></p>
     </header>
 
     <main>
         <h3><i class="fa-solid fa-id-card"></i> About Me</h3>
         <div class="notice reveal">
-            I’m a Data Analytics graduate from Bellevue College with hands-on
+            I'm a Data Analytics graduate from Bellevue College with hands-on
             experience in operations, technical support, and customer-facing retail.
-            I’ve worked in fast-paced environments where accuracy, reliability, and
+            I've worked in fast-paced environments where accuracy, reliability, and
             communication matter, from managing complex workflows to leading and
-            training team members. I’m especially interested in how data,
+            training team members. I'm especially interested in how data,
             technology, and business come together to improve everyday operations.
         </div>
 
@@ -50,7 +59,7 @@
 
         <div class="notice reveal">
             <strong>Lead Customer Service Associate</strong> — <em>Amazon</em><br />
-            <dt><em>September 2024 - Present</em><br /></dt>
+            <p class="date"><em>September 2024 - Present</em></p>
             <ul>
                 <li>
                     Delivered high-quality customer support for returns and pickups,
@@ -85,7 +94,7 @@
             </ul>
             <hr />
             <strong>Locker+ Retail Associate</strong> — <em>Amazon</em><br />
-            <dt><em>March 2022 - September 2024</em><br /></dt>
+            <p class="date"><em>March 2022 - September 2024</em></p>
             <ul>
                 <li>
                     Processed customer package pickups and returns while delivering
@@ -102,7 +111,7 @@
                 </li>
                 <li>
                     Maintained clean, safe, and organized workspace in compliance with
-                    operational standards Managed daily site operations including
+                    operational standards and managed daily site operations including
                     opening and closing procedures for Locker+ location.
                 </li>
                 <li>
@@ -120,12 +129,12 @@
         <div class="notice reveal">
             <strong>Bachelor of Applied Science in Data Analytics</strong> —
             <em>Bellevue College</em><br />
-            <strong>Grade: </strong><em> magna cum laude</em><br />
+            <strong>Grade: </strong><em>magna cum laude</em><br />
             <hr />
-            <dt>
+            <p class="date">
                 Verify this credential online at
                 <a href="https://www.parchment.com/u/s/MXDP" target="_blank">Parchment.</a>
-            </dt>
+            </p>
         </div>
 
         <h3><i class="fa-solid fa-star"></i> Skills</h3>
@@ -145,10 +154,10 @@
             © <span id="year"></span> Danny Pham — Built with
             <a href="https://simplecss.org/" target="_blank">Simple.css</a>
             and distributed under an
-            <a href="https://github.com/dannyphamv/website/blob/main/LICENSE" target="_blank">MIT License.</a>
+            <a href="https://github.com/dannyphamv/website/blob/main/LICENSE" target="_blank" rel="noopener">MIT
+                License.</a>
         </p>
     </footer>
-    <script src="script.js"></script>
 </body>
 
 </html>
