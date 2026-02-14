@@ -43,8 +43,6 @@ A professional personal portfolio built with a focus on high performance, clean 
 ├── CNAME               # Custom domain configuration
 ├── sitemap.xml         # SEO sitemap
 ├── LICENSE             # MIT License
-└── .github/
-    └── workflows/
 ```
 
 ## Installation & Usage
