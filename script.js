@@ -17,6 +17,30 @@ updateIcon(savedTheme);
 // Check if user prefers reduced motion for accessibility
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* Mobile Device Detection
+ * Detects actual mobile devices rather than just screen size
+ * This ensures tablets with large screens still get Vanta animations
+ */
+function isMobileDevice() {
+    // Check user agent for mobile device signatures
+    const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    const isMobileUA = mobileRegex.test(navigator.userAgent);
+    
+    // Check for touch capability (more reliable than user agent alone)
+    const isTouchDevice = navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
+    
+    // Check screen size as additional factor
+    const isSmallScreen = window.innerWidth <= 768;
+    
+    // Device is considered mobile if it matches mobile UA OR (is touch-enabled AND has small screen)
+    return isMobileUA || (isTouchDevice && isSmallScreen);
+}
+
+// Apply mobile class if device is detected as mobile
+if (isMobileDevice()) {
+    document.documentElement.classList.add('is-mobile-device');
+}
+
 /* Vanta.js Cloud Logic - Optimized Performance Strategy
  * 
  * WHY we use .setOptions() instead of destroying/recreating:
@@ -34,6 +58,11 @@ function initVanta() {
         return;
     }
 
+    // Don't initialize Vanta on mobile devices for better performance and battery life
+    if (isMobileDevice()) {
+        return;
+    }
+
     const isDark = html.getAttribute("data-theme") === "dark";
     
     // Color configuration: Dark theme uses muted colors to reduce eye strain
@@ -41,7 +70,7 @@ function initVanta() {
         el: "body",
         mouseControls: true,
         touchControls: true,
-        gyroControls: true,
+        gyroControls: false, // Disable gyro on mobile for performance
         minHeight: 200.00,
         minWidth: 200.00,
         backgroundColor: isDark ? 0x212121 : 0xffffff,

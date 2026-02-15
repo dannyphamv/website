@@ -160,16 +160,15 @@ body {
   padding: 0 !important;
 }
 
-/* Disable Vanta on mobile devices to improve performance and reduce battery drain */
-@media only screen and (max-width: 720px) {
-  .vanta-canvas {
-    display: none !important;
-  }
-  
-  /* Ensure background color is visible when Vanta is disabled */
-  body {
-    background-color: var(--bg) !important;
-  }
+/* Disable Vanta on actual mobile devices (detected via JavaScript)
+ * This targets phones and small tablets, not just any small screen
+ * Improves performance and battery life on mobile devices */
+.is-mobile-device .vanta-canvas {
+  display: none !important;
+}
+
+.is-mobile-device body {
+  background-color: var(--bg) !important;
 }
 
 /* Performance: Disable Vanta for users who prefer reduced motion
