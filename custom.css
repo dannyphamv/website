@@ -138,7 +138,7 @@ html {
 
 body {
   position: relative;
-  background-color: var(--bg);
+  background-color: var(--bg accent) !important;
   min-height: 100vh;
   min-height: 100dvh; /* Dynamic viewport height for mobile - prevents address bar issues */
 }
