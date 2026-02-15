@@ -31,6 +31,12 @@ nav #theme-toggle i {
   margin: 0 !important;
 }
 
+main img {
+  background-color: var(--bg accent) !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
 /* Hover effect for buttons and links with hover-button class */
 .button {
   transition: all 0.3s ease !important;
@@ -63,7 +69,8 @@ nav #theme-toggle:hover {
   transition:
     opacity 0.8s ease-out,
     transform 0.8s ease-out;
-  will-change: opacity, transform; /* Optimizes GPU rendering for smoother animations */
+  will-change:
+    opacity, transform; /* Optimizes GPU rendering for smoother animations */
 }
 
 .reveal.active {
