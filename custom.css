@@ -54,10 +54,6 @@ nav #theme-toggle:hover {
   transform: translateY(-2px);
 }
 
-code {
-  color: var(--accent);
-}
-
 /* Mobile nav override - Simple.css removes borders on mobile by default
  * We restore them to maintain visual consistency across breakpoints */
 @media only screen and (max-width: 720px) {
@@ -114,7 +110,7 @@ code {
   --accent: #0d47a1;
   --accent-hover: #1266e2;
   --accent-text: var(--bg);
-  --code: #d81b60;
+  --code: var(--accent);
   --preformatted: #444;
   --marked: #ffdd33;
   --disabled: #efefef;
@@ -129,7 +125,7 @@ code {
   /* Gold instead of blue - warmer and less harsh on eyes */
   --accent-hover: #ffe099;
   --accent-text: var(--bg);
-  --code: #f06292;
+  --code: var(--accent);
   --preformatted: #ccc;
   --disabled: #111;
 }
