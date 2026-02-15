@@ -63,8 +63,7 @@ nav #theme-toggle:hover {
   transition:
     opacity 0.8s ease-out,
     transform 0.8s ease-out;
-  will-change:
-    opacity, transform; /* Optimizes GPU rendering for smoother animations */
+  will-change: opacity, transform; /* Optimizes GPU rendering for smoother animations */
 }
 
 .reveal.active {
@@ -131,9 +130,34 @@ nav #theme-toggle:hover {
   z-index: 1000;
 }
 
-/* Vanta background fix */
+/* Vanta background fix - ensure full viewport coverage */
 html {
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  background-color: var(--bg) !important;
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile - prevents address bar issues */
+  margin: 0;
+  padding: 0;
+}
+
+/* Fixed positioning ensures Vanta canvas stays behind all content
+ * Using dvh (dynamic viewport height) prevents iOS Safari scrolling bugs */
+.vanta-canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: -1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Disable Vanta on mobile devices to improve performance and reduce battery drain */
@@ -141,31 +165,18 @@ html {
   .vanta-canvas {
     display: none !important;
   }
-
-body {
-  position: relative;
-  background-color: var(--bg) !important;
-  min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile - prevents address bar issues */
-}
-
-/* Fixed positioning ensures Vanta canvas stays behind all content
- * Using dvh (dynamic viewport height) prevents iOS Safari scrolling bugs */
-.vanta-canvas {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  z-index: -1;
+  
+  /* Ensure background color is visible when Vanta is disabled */
+  body {
+    background-color: var(--bg) !important;
+  }
 }
 
 /* Performance: Disable Vanta for users who prefer reduced motion
  * The WebGL animation can cause issues for users with vestibular disorders */
 @media (prefers-reduced-motion: reduce) {
   .vanta-canvas {
-    display: none;
+    display: none !important;
   }
 }
 
