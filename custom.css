@@ -32,29 +32,11 @@ nav #theme-toggle i {
 }
 
 /* Hover effect for buttons and links with hover-button class */
-.hover-button {
-  box-sizing: border-box !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-width: 0 !important;
-  width: auto !important;
-  height: 2.2rem !important;
-  padding: 0 15px !important;
-  margin: 5px !important;
-  border: var(--border-width) solid var(--border) !important;
-  border-radius: var(--standard-border-radius) !important;
-  background: var(--accent-bg) !important;
-  color: var(--text) !important;
-  text-decoration: none !important;
-  font-size: 1rem !important;
-  line-height: 1 !important;
+.button {
   transition: all 0.3s ease !important;
 }
 
-.hover-button:hover {
-  border-color: var(--accent) !important;
-  color: var(--accent) !important;
+.button:hover {
   transform: translateY(-2px);
 }
 
