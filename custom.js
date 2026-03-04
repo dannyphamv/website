@@ -4,8 +4,8 @@ function initVanta() {
   if (vantaEffect) vantaEffect.destroy();
   vantaEffect = VANTA.TOPOLOGY({
     el: "body",
-    mouseControls: true,
-    touchControls: true,
+    mouseControls: false,
+    touchControls: false,
     gyroControls: false,
     minHeight: 200.0,
     minWidth: 200.0,
