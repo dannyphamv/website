@@ -22,8 +22,8 @@ function initVanta() {
 
 // Wait for full page load so Vanta scripts are guaranteed available
 window.addEventListener("load", () => {
-  // Start Vanta background
-  initVanta();
+  // Delay Vanta init to ensure body has dimensions before rendering
+  setTimeout(initVanta, 100);
 
   // Set dynamic year if element exists
   const yearEl = document.getElementById("year");
@@ -47,6 +47,13 @@ window.addEventListener("load", () => {
     loader.style.opacity = "0";
     setTimeout(() => loader.remove(), 300);
   }, 800);
+});
+
+// Fallback for Safari bfcache - fires when page is restored from cache
+window.addEventListener("pageshow", (e) => {
+  if (e.persisted) {
+    setTimeout(initVanta, 100);
+  }
 });
 
 // Reinitialize Vanta on resize to prevent stretching
