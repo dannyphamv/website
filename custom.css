@@ -1,0 +1,124 @@
+/* ========================
+   FONTS
+======================== */
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1;
+  --bulma-scheme-main: transparent;
+  --bulma-body-background-color: transparent;
+  --bulma-navbar-background-color: transparent;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+/* ========================
+   LAYOUT
+======================== */
+html {
+  background-color: #121212 !important;
+}
+
+html,
+body {
+  background: transparent !important;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body > canvas {
+  min-height: 100% !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -1;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  flex: 1;
+}
+
+.footer {
+  background: transparent !important;
+  margin-top: auto;
+  padding-bottom: 2rem;
+}
+
+.notification {
+  background: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ========================
+   TRANSPARENT ELEMENTS
+======================== */
+.navbar,
+.navbar-menu,
+.navbar-item,
+.section,
+.columns,
+.column {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ========================
+   NAVBAR
+======================== */
+.navbar-menu {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.navbar-menu,
+.navbar-end {
+  display: flex !important;
+  margin: auto !important;
+}
+
+.navbar-item i {
+  font-size: 2rem;
+}
+
+.navbar-item:hover,
+.navbar-item:focus {
+  background-color: transparent !important;
+}
+
+/* ========================
+   LINKS
+======================== */
+.nav-link:hover,
+.navbar-item:hover,
+.notification a:hover,
+footer a {
+  color: white !important;
+}
+
+footer a:hover {
+  color: var(--bulma-subtitle-color) !important;
+}
+
+.notification a {
+  text-decoration: none !important;
+  color: var(--bulma-text) !important;
+}

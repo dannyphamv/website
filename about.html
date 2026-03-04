@@ -1,0 +1,161 @@
+<!doctype html>
+<html data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About • Danny Pham</title>
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
+    <link rel="stylesheet" href="custom.css" />
+  </head>
+
+  <body>
+    <div
+      id="loader"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #121212;
+        z-index: 9999;
+      "
+    ></div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-menu is-active">
+        <div class="navbar-end">
+          <a
+            href="https://github.com/dannyphamv"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+            class="navbar-item"
+            ><i class="bi bi-github"></i
+          ></a>
+          <a
+            href="https://linkedin.com/in/dannyphamv"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn"
+            class="navbar-item"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+          <a
+            href="mailto:dannyphamv@duck.com"
+            target="_blank"
+            rel="noopener"
+            aria-label="Email"
+            class="navbar-item"
+            ><i class="bi bi-envelope-paper-fill"></i
+          ></a>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div
+        class="columns"
+        style="
+          margin-top: 10rem;
+          width: 100%;
+          justify-content: center;
+          gap: 20rem;
+        "
+      >
+        <div class="column is-narrow">
+          <h1 class="title">Hello, I'm Danny Pham</h1>
+        </div>
+        <div class="column is-narrow">
+          <p class="subtitle is-4 has-text-weight-bold mb-1">
+            <a
+              href="/index.html"
+              class="nav-link"
+              style="color: inherit; text-decoration: none"
+              >Home</a
+            >
+          </p>
+          <p class="subtitle is-3 has-text-weight-bold mb-1">
+            <a
+              href="/about.html"
+              class="nav-link"
+              style="color: white; text-decoration: none"
+              >About</a
+            >
+          </p>
+          <p class="subtitle is-4 has-text-weight-bold mb-1">
+            <a
+              href="/experience.html"
+              class="nav-link"
+              style="color: inherit; text-decoration: none"
+              >Experience</a
+            >
+          </p>
+          <p class="subtitle is-4 has-text-weight-bold mb-1">
+            <a
+              href="/education.html"
+              class="nav-link"
+              style="color: inherit; text-decoration: none"
+              >Education</a
+            >
+          </p>
+          <p class="subtitle is-4 has-text-weight-bold mb-1">
+            <a
+              href="/skills.html"
+              class="nav-link"
+              style="color: inherit; text-decoration: none"
+              >Skills</a
+            >
+          </p>
+        </div>
+      </div>
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 5rem;
+        "
+      >
+        <div class="notification">
+          <p class="title">About Me</p>
+          <div class="block">
+            I'm a Data Analytics graduate from Bellevue College with hands-on
+            experience in operations, technical support, and customer-facing
+            retail. I've worked in fast-paced environments where accuracy,
+            reliability, and communication matter, from managing complex
+            workflows to leading and training team members. I'm especially
+            interested in how data, technology, and business come together to
+            improve everyday operations.
+          </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p class="meta">
+          <!-- Dynamic year via JavaScript prevents manual updates -->
+          © <span id="year"></span> Danny Pham — Built with
+          <a href="https://bulma.io/" target="_blank">Bulma</a>
+          and distributed under an
+          <a
+            href="https://github.com/dannyphamv/website/blob/main/LICENSE"
+            target="_blank"
+            rel="noopener"
+            >MIT License.</a
+          >
+        </p>
+      </div>
+    </footer>
+    <script src="custom.js"></script>
+  </body>
+</html>
