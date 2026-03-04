@@ -1,6 +1,10 @@
 let vantaEffect = null;
 
 function initVanta() {
+  if (typeof VANTA === "undefined") {
+    setTimeout(initVanta, 100);
+    return;
+  }
   if (vantaEffect) vantaEffect.destroy();
   vantaEffect = VANTA.TOPOLOGY({
     el: "body",
@@ -51,17 +55,17 @@ document.addEventListener("click", (e) => {
   });
 });
 
-window.addEventListener('load', () => {
-    const columns = document.querySelectorAll('.column.is-narrow');
-    if (columns.length >= 2) {
-        const left = columns[0].getBoundingClientRect();
-        const right = columns[1].getBoundingClientRect();
-        const totalWidth = right.right - left.left;
-        const notification = document.querySelector('.notification');
-        if (notification) {
-            notification.style.width = totalWidth + 'px';
-        }
+window.addEventListener("load", () => {
+  const columns = document.querySelectorAll(".column.is-narrow");
+  if (columns.length >= 2) {
+    const left = columns[0].getBoundingClientRect();
+    const right = columns[1].getBoundingClientRect();
+    const totalWidth = right.right - left.left;
+    const notification = document.querySelector(".notification");
+    if (notification) {
+      notification.style.width = totalWidth + "px";
     }
+  }
 });
 
-document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
