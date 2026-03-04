@@ -20,23 +20,43 @@ function initVanta() {
   });
 }
 
-initVanta();
+// Wait for full page load so Vanta scripts are guaranteed available
+window.addEventListener("load", () => {
+  // Start Vanta background
+  initVanta();
 
+  // Set dynamic year if element exists
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Match notification width to columns layout
+  const columns = document.querySelectorAll(".column.is-narrow");
+  if (columns.length >= 2) {
+    const left = columns[0].getBoundingClientRect();
+    const right = columns[1].getBoundingClientRect();
+    const totalWidth = right.right - left.left;
+    const notification = document.querySelector(".notification");
+    if (notification) notification.style.width = totalWidth + "px";
+  }
+
+  // Fade out loader
+  setTimeout(() => {
+    const loader = document.getElementById("loader");
+    if (!loader) return;
+    loader.style.transition = "opacity 0.3s ease";
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 300);
+  }, 800);
+});
+
+// Reinitialize Vanta on resize to prevent stretching
 let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(initVanta, 300);
 });
 
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const loader = document.getElementById("loader");
-    loader.style.transition = "opacity 0.3s ease";
-    loader.style.opacity = "0";
-    setTimeout(() => loader.remove(), 300);
-  }, 300);
-});
-
+// Fade out on nav-link click then navigate
 document.addEventListener("click", (e) => {
   const link = e.target.closest(".nav-link");
   if (!link || !link.href || link.origin !== window.location.origin) return;
@@ -54,18 +74,3 @@ document.addEventListener("click", (e) => {
     }, 300);
   });
 });
-
-window.addEventListener("load", () => {
-  const columns = document.querySelectorAll(".column.is-narrow");
-  if (columns.length >= 2) {
-    const left = columns[0].getBoundingClientRect();
-    const right = columns[1].getBoundingClientRect();
-    const totalWidth = right.right - left.left;
-    const notification = document.querySelector(".notification");
-    if (notification) {
-      notification.style.width = totalWidth + "px";
-    }
-  }
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
