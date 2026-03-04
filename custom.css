@@ -9,6 +9,7 @@
   --bulma-scheme-main: transparent;
   --bulma-body-background-color: transparent;
   --bulma-navbar-background-color: transparent;
+  color-scheme: dark;
 }
 
 @supports (font-variation-settings: normal) {
@@ -22,6 +23,7 @@
 ======================== */
 html {
   background-color: #121212 !important;
+  background-attachment: fixed;
 }
 
 html,
