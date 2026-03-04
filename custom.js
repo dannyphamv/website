@@ -40,7 +40,7 @@ document.addEventListener("click", (e) => {
 
   const loader = document.createElement("div");
   loader.style.cssText =
-    "position:fixed;top:0;left:0;width:100vw;height:100vh;background:#121212;z-index:9999;opacity:0;transition:opacity 0.3s ease;";
+    "position:fixed;top:0;left:0;width:100vw;height:100dvh;background:#121212;z-index:9999;opacity:0;transition:opacity 0.3s ease;";
   document.body.appendChild(loader);
 
   requestAnimationFrame(() => {
