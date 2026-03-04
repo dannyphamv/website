@@ -23,10 +23,11 @@
 ======================== */
 html {
   background-color: #121212 !important;
-  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-html,
 body {
   background: transparent !important;
   min-height: 100vh;
