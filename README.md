@@ -10,3 +10,4 @@
 **JavaScript Libraries**
 - [p5.js 1.9.0](https://p5js.org/)
 - [Vanta.js](https://www.vantajs.com/)
+- [EmbedPDF Snippet](https://www.embedpdf.com/)
