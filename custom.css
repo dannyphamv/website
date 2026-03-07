@@ -154,3 +154,40 @@ footer a:hover::after {
 .tag:hover {
   transform: scale(1.1);
 }
+
+/* ========================
+   TOOLTIPS
+======================== */
+:root {
+  --tooltip-bg: #eff1f4;
+  --tooltip-color: #000;
+}
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-0.5rem);
+  background: var(--tooltip-bg);
+  color: var(--tooltip-color);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  z-index: 99;
+}
+
+[data-tooltip]:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
