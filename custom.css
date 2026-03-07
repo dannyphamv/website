@@ -10,6 +10,8 @@
   --bulma-body-background-color: transparent;
   --bulma-navbar-background-color: transparent;
   color-scheme: dark;
+  --tooltip-bg: white;
+  --tooltip-color: black;
 }
 
 @supports (font-variation-settings: normal) {
@@ -44,8 +46,8 @@ body > canvas {
   top: 0 !important;
   left: 0 !important;
   width: 100vw !important;
-  height: 100vh !important; /* Fallback for older browsers */
-  height: 100dvh !important; /* Dynamic viewport height for mobile */
+  height: 100vh !important;
+  height: 100dvh !important;
   z-index: -1;
 }
 
@@ -82,12 +84,8 @@ body > canvas {
    NAVBAR
 ======================== */
 .navbar-menu {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
   box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .navbar-menu,
@@ -158,11 +156,6 @@ footer a:hover::after {
 /* ========================
    TOOLTIPS
 ======================== */
-:root {
-  --tooltip-bg: white;
-  --tooltip-color: black;
-}
-
 [data-tooltip] {
   position: relative;
 }
