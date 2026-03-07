@@ -148,4 +148,9 @@ footer a:hover::after {
 ======================== */
 .tag {
   color: white !important;
+  transition: transform 0.3s ease;
+}
+
+.tag:hover {
+  transform: scale(1.1);
 }
