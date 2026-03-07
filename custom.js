@@ -1,8 +1,9 @@
 let vantaEffect = null;
 
-function initVanta() {
+function initVanta(attempts = 0) {
   if (typeof VANTA === "undefined") {
-    setTimeout(initVanta, 100);
+    if (attempts >= 20) return;
+    setTimeout(() => initVanta(attempts + 1), 100);
     return;
   }
   if (vantaEffect) vantaEffect.destroy();
@@ -133,9 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  document
-    .querySelector('a[aria-label="Email"]')
-    .addEventListener("click", (e) => {
+  const emailLink = document.querySelector('a[aria-label="Email"]');
+  if (emailLink)
+    emailLink.addEventListener("click", (e) => {
       e.preventDefault();
       navigator.clipboard.writeText("contact@dannyphamv.com").then(() => {
         const el = document.querySelector('a[aria-label="Email"]');
