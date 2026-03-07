@@ -117,7 +117,7 @@ footer a {
 
 .notification a {
   text-decoration: none !important;
-  color: var(--bulma-text) !important;
+  color: inherit !important;
 }
 
 footer a {
