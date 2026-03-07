@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const el = document.querySelector('a[aria-label="Email"]');
         el.dataset.tooltip = "Copied!";
         setTimeout(() => {
-          el.dataset.tooltip = "Contact";
+          el.dataset.tooltip = "Email";
         }, 1500);
       });
     });
