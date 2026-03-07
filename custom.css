@@ -159,8 +159,8 @@ footer a:hover::after {
    TOOLTIPS
 ======================== */
 :root {
-  --tooltip-bg: #eff1f4;
-  --tooltip-color: #000;
+  --tooltip-bg: white;
+  --tooltip-color: black;
 }
 
 [data-tooltip] {
@@ -170,7 +170,7 @@ footer a:hover::after {
 [data-tooltip]::before {
   content: attr(data-tooltip);
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% + 0.25rem);
   left: 50%;
   transform: translateX(-50%) translateY(-0.5rem);
   background: var(--tooltip-bg);
