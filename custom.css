@@ -176,6 +176,7 @@ footer a:hover::after {
   background: var(--tooltip-bg);
   color: var(--tooltip-color);
   font-size: 0.875rem;
+  text-align: center;
   white-space: nowrap;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
