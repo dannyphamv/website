@@ -58,15 +58,8 @@ window.addEventListener("pageshow", (e) => {
 });
 
 // Reinitialize Vanta on resize to prevent stretching
-let resizeTimer;
-let lastWidth = window.innerWidth;
-
-window.addEventListener("resize", () => {
-  const currentWidth = window.innerWidth;
-  if (currentWidth === lastWidth) return; // ignore height-only changes
-  lastWidth = currentWidth;
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(initVanta, 300);
+window.addEventListener("orientationchange", () => {
+  setTimeout(initVanta, 300);
 });
 
 // Fade out on nav-link click then navigate
