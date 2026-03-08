@@ -168,7 +168,6 @@ footer a:hover::after {
   transform: translateX(-50%) translateY(-0.5rem);
   background: var(--tooltip-bg);
   color: var(--tooltip-color);
-  font-size: 0.875rem;
   text-align: center;
   white-space: nowrap;
   padding: 0.25rem 0.5rem;
