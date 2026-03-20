@@ -1,13 +1,14 @@
 # Danny Pham — Personal Website
 
 **CSS Frameworks**
-- [Bulma 1.0.4](https://bulma.io/)
-- [Bootstrap Icons 1.13.1](https://icons.getbootstrap.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Bootstrap Icons](https://icons.getbootstrap.com/)
 
 **Fonts**
 - [Inter](https://rsms.me/inter/)
 
 **JavaScript Libraries**
-- [p5.js 1.9.0](https://p5js.org/)
+- [p5.js](https://p5js.org/)
 - [Vanta.js](https://www.vantajs.com/)
 - [EmbedPDF Snippet](https://www.embedpdf.com/)
+- [Popper](https://popper.js.org/docs/v2/)
