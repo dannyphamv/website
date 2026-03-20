@@ -1,142 +1,92 @@
-let vantaEffect = null;
+const tooltipTriggerList = document.querySelectorAll(
+  '[data-bs-toggle="tooltip"]',
+);
+const tooltipList = [...tooltipTriggerList].map(
+  (tooltipTriggerEl) =>
+    new bootstrap.Tooltip(tooltipTriggerEl, {
+      offset: [0, 15],
+    }),
+);
 
-function initVanta(attempts = 0) {
-  if (typeof VANTA === "undefined") {
-    if (attempts >= 20) return;
-    setTimeout(() => initVanta(attempts + 1), 100);
-    return;
+let vantaEffect = VANTA.TOPOLOGY({
+  el: document.body,
+  mouseControls: false,
+  touchControls: false,
+  gyroControls: false,
+  minHeight: 200.0,
+  minWidth: 200.0,
+  scale: 1.0,
+  scaleMobile: 1.0,
+  backgroundColor: 0x212529,
+  color: 0x017FC0
+});
+
+function ensureVanta() {
+  if (!vantaEffect) {
+    vantaEffect = VANTA.TOPOLOGY({
+      el: document.body,
+      mouseControls: false,
+      touchControls: false,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      backgroundColor: 0x212529,
+      color: 0x017FC0
+    });
   }
-  if (vantaEffect) vantaEffect.destroy();
-  vantaEffect = VANTA.TOPOLOGY({
-    el: "body",
-    mouseControls: false,
-    touchControls: false,
-    gyroControls: false,
-    minHeight: 200.0,
-    minWidth: 200.0,
-    scale: 1.0,
-    scaleMobile: 1.0,
-    color: 0x3c71f7,
-    backgroundColor: 0x121212,
-  });
 }
 
-// Wait for full page load so Vanta scripts are guaranteed available
-window.addEventListener("load", () => {
-  // Delay Vanta init to ensure body has dimensions before rendering
-  setTimeout(initVanta, 100);
-
-  // Set dynamic year if element exists
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // Match notification width to columns layout
-  const columns = document.querySelectorAll(".column.is-narrow");
-  if (columns.length >= 2) {
-    const left = columns[0].getBoundingClientRect();
-    const right = columns[1].getBoundingClientRect();
-    const totalWidth = right.right - left.left;
-    const notification = document.querySelector(".notification");
-    if (notification) notification.style.width = totalWidth + "px";
+window.addEventListener('resize', () => {
+  if (vantaEffect) {
+    vantaEffect.destroy();
+    vantaEffect = null;
   }
-
-  // Fade out loader
-  setTimeout(() => {
-    const loader = document.getElementById("loader");
-    if (!loader) return;
-    loader.style.transition = "opacity 0.3s ease";
-    loader.style.opacity = "0";
-    setTimeout(() => loader.remove(), 300);
-  }, 800);
+  ensureVanta();
 });
 
-// Fallback for Safari bfcache - fires when page is restored from cache
-window.addEventListener("pageshow", (e) => {
-  if (e.persisted) {
-    setTimeout(initVanta, 100);
-  }
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) ensureVanta();
 });
 
-// Reinitialize Vanta on resize to prevent stretching
-window.addEventListener("orientationchange", () => {
-  setTimeout(initVanta, 300);
-});
+window.addEventListener('focus', ensureVanta);
 
-// Fade out on nav-link click then navigate
-document.addEventListener("click", (e) => {
-  const link = e.target.closest(".nav-link");
-  if (!link || !link.href || link.origin !== window.location.origin) return;
-  e.preventDefault();
+const sectionOrder = ["home", "experience", "education", "projects", "skills"];
+let currentSection = "home";
+let isAnimating = false;
 
-  const loader = document.createElement("div");
-  loader.style.cssText =
-    "position:fixed;top:0;left:0;width:100vw;height:100dvh;background:#121212;z-index:9999;opacity:0;transition:opacity 0.3s ease;";
-  document.body.appendChild(loader);
+const navLinks = document.querySelectorAll("#main-nav .nav-link");
 
-  requestAnimationFrame(() => {
-    loader.style.opacity = "1";
+navLinks.forEach((link) => {
+  link.addEventListener("click", function () {
+    const target = this.getAttribute("data-section");
+    if (target === currentSection || isAnimating) return;
+
+    isAnimating = true;
+
+    navLinks.forEach((l) => l.classList.remove("active"));
+    this.classList.add("active");
+
+    const currentEl = document.getElementById(currentSection);
+    const targetEl = document.getElementById(target);
+
+    currentEl.classList.add("fade-out");
+
     setTimeout(() => {
-      window.location.href = link.href;
+      currentEl.classList.remove("active-section", "fade-out");
+
+      targetEl.classList.add("active-section", "fade-in");
+
+      setTimeout(() => {
+        targetEl.classList.remove("fade-in");
+        isAnimating = false;
+      }, 350);
+
+      currentSection = target;
     }, 300);
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Functions to open and close a modal
-  function openModal($el) {
-    $el.classList.add("is-active");
-  }
-
-  function closeModal($el) {
-    $el.classList.remove("is-active");
-  }
-
-  function closeAllModals() {
-    (document.querySelectorAll(".modal") || []).forEach(($modal) => {
-      closeModal($modal);
-    });
-  }
-
-  // Add a click event on buttons to open a specific modal
-  (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
-    const modal = $trigger.dataset.target;
-    const $target = document.getElementById(modal);
-
-    $trigger.addEventListener("click", () => {
-      openModal($target);
-    });
-  });
-
-  // Add a click event on various child elements to close the parent modal
-  (
-    document.querySelectorAll(
-      ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button",
-    ) || []
-  ).forEach(($close) => {
-    const $target = $close.closest(".modal");
-
-    $close.addEventListener("click", () => {
-      closeModal($target);
-    });
-  });
-
-  // Add a keyboard event to close all modals
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeAllModals();
-    }
-  });
-
-  const emailLink = document.querySelector('a[aria-label="Email"]');
-  if (emailLink)
-    emailLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      navigator.clipboard.writeText("contact@dannyphamv.com").then(() => {
-        const el = document.querySelector('a[aria-label="Email"]');
-        el.dataset.tooltip = "Copied!";
-        setTimeout(() => {
-          el.dataset.tooltip = "Email";
-        }, 1500);
-      });
-    });
-});
+document.querySelector("footer .text-body-secondary").textContent =
+  `© ${new Date().getFullYear()} Danny Pham`;
